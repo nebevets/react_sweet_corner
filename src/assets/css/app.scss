@@ -1,11 +1,13 @@
+$primary-text-color: #754b23;
+
 body {
   margin: 0;
   box-sizing: border-box;
   font-family: Arial, Helvetica, sans-serif;
-  color: #754b23;
+  color: $primary-text-color;
 }
 a, a:visited, a:active {
-  color: #754b23;
+  color: $primary-text-color;
   text-decoration: none;
 }
 a:hover {
