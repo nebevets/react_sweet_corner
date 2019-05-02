@@ -1,0 +1,18 @@
+@import '../../assets/css/colors.scss';
+
+.main-nav {
+  text-align: right;
+  text-transform: uppercase;
+  li {
+    display: inline-block;
+    list-style: none;
+    margin-right: 2.75em;
+  }
+}
+a, a:visited, a:active {
+  color: $primary-text-color;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}

@@ -1,14 +1,10 @@
-.headerNav {
-  text-align: right;
-  text-transform: uppercase;
-  li {
-    display: inline-block;
-    list-style: none;
-    margin-right: 2.75em;
+@import '../../assets/css/colors.scss';
+
+.header {
+  border-bottom: 24px solid $primary-text-color;
+  .motto {
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.5em;
+    margin: 0.75em 0;
   }
-}
-.motto {
-  font-family: 'Dancing Script', cursive;
-  font-size: 1.5em;
-  margin: 0.75em 0;
 }
