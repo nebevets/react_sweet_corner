@@ -6,8 +6,8 @@ const About = () => {
   return(
     <div className="aboutUs">
       <div className="contentBackground">
+        <h3>Delicious cupcakes, magical moments!</h3>
         <div className="content">
-          <h3>Delicious cupcakes, magical moments!</h3>
           <p>
             Sweet Corner is growing fast. Our delicious cupcakes of all sizes, shapes, colors, and tastes are creating a real wow factor.
           </p>
