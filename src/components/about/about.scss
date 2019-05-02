@@ -1,0 +1,18 @@
+.contentBackground{
+  background-image: url(../../assets/images/strips1.png);
+  background-repeat: repeat-y;
+  background-position: right;
+  .content{
+    padding: 3% 15% 0 3%;
+    margin-right: 20%;
+    background-image: url(../../assets/images/dots-box1.png);
+    background-repeat: no-repeat;
+    background-position: right;
+    h3:first-child {
+      margin-top: 0;
+    }
+  }
+}
+.cupCakes{
+  margin: 24px 0;
+}
