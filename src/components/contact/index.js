@@ -20,14 +20,14 @@ const Contact = () => {
       </div>
       <div className="contactForm">
         <h4>Contact Form</h4>
-        <div className="submitForm">
+        <form className="submitForm">
           <input type="text" placeholder="Name" name="name"/>
           <input type="text" placeholder="Email" name="email"/>
           <input type="text" placeholder="Phone" name="phone"/>
           <input type="text" placeholder="Subject" name="subject"/>
           <textarea name="message" placeholder="Message"></textarea>
           <button>Send</button>
-        </div> 
+        </form> 
       </div>
       <div className="schedule">
         <h4 className="">For phone orders, our work schedule is:</h4>
