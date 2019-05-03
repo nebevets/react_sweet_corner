@@ -1,9 +1,11 @@
+@import '../../assets/css/colors.scss';
+
 .footer{
-  background-color: #06b4af;
+  background-color: $scThemeThree;
   width: 1000px;
   bottom: 0;
   height: 80px;
-  color: #f6ede6;
+  color: $dotColor;
   div {
     display: inline-block;
     text-align: center;
