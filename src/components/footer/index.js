@@ -10,7 +10,7 @@ const Footer = () => {
         <img src={dots} alt="dots" />
       </div>
       <div className="copy">
-        Copyright &copy; 2014 Sweet Corner. All rights reserved.
+        Copyright &copy; {new Date().getFullYear()} Sweet Corner. All rights reserved.
       </div>
       <div className="phone">
         <img src={phone} alt="phone" />
