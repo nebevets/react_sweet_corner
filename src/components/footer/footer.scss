@@ -1,7 +1,6 @@
 .footer{
   background-color: #06b4af;
   width: 1000px;
-  position: fixed;
   bottom: 0;
   height: 80px;
   color: #f6ede6;
@@ -17,6 +16,7 @@
   }
   .phone{
     text-align: left;
+    font-size: small;
     img {
       padding-right: 5px;
     }
