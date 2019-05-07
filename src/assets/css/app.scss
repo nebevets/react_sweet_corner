@@ -1,17 +1,10 @@
-$primary-text-color: #754b23;
+@import './colors.scss';
 
 body {
   margin: 0;
   box-sizing: border-box;
   font-family: Verdana, Geneva, Tahoma, sans-serif, sans-serif;
   color: $primary-text-color;
-}
-a, a:visited, a:active {
-  color: $primary-text-color;
-  text-decoration: none;
-}
-a:hover {
-  text-decoration: underline;
 }
 .app {
   .center{
