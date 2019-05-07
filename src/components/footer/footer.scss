@@ -1,0 +1,24 @@
+.footer{
+  background-color: #06b4af;
+  width: 1000px;
+  position: fixed;
+  bottom: 0;
+  height: 80px;
+  color: #f6ede6;
+  div {
+    display: inline-block;
+    text-align: center;
+    width: 15%;
+    transform: translateY(50%);
+  }
+  .copy{
+    width: 70%;
+    transform: translateY(65%);
+  }
+  .phone{
+    text-align: left;
+    img {
+      padding-right: 5px;
+    }
+  }
+}
