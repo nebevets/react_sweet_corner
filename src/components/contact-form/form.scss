@@ -1,0 +1,42 @@
+@import '../../assets/css/colors.scss';
+
+.contactForm {
+  display: inline-block;
+  width: 320px;
+  vertical-align: top;
+  margin-left: 5%;
+  .submitForm {
+    text-align: right;
+    input, textarea {
+      width: 310px;
+    }
+    input, button {
+      height: 35px;
+    }
+    textarea {
+      height: 115px;
+      font-family: inherit;
+      font-size: inherit;
+    }
+    button {
+      width: 155px;
+      text-transform: uppercase;
+      color: $dotColor;
+    }
+    input, textarea, button {
+      border: none;
+      font-size: 1em;
+      padding-left: 10px;
+      margin-bottom: 1em;
+    }
+    :nth-child(3n+1){
+      background-color: $scThemeOne
+    }
+    :nth-child(3n+2){
+      background-color: $scThemeTwo
+    }
+    :nth-child(3n+3){
+      background-color: $scThemeThree
+    }
+  }
+}

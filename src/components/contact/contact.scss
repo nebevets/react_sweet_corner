@@ -15,46 +15,6 @@
     transform: translate(275%, 10%);
   }
 }
-.contactForm {
-  display: inline-block;
-  width: 320px;
-  vertical-align: top;
-  margin-left: 5%;
-}
-.submitForm {
-  text-align: right;
-  input[type="text"], textarea {
-    width: 310px;
-  }
-  input[type="text"], button {
-    height: 35px;
-  }
-  textarea {
-    height: 115px;
-    font-family: inherit;
-    font-size: inherit;
-  }
-  button {
-    width: 155px;
-    text-transform: uppercase;
-    color: $dotColor;
-  }
-  input[type="text"], textarea, button {
-    border: none;
-    font-size: 1em;
-    padding-left: 10px;
-    margin-bottom: 1em;
-  }
-  :nth-child(3n+1){
-    background-color: $scThemeOne
-  }
-  :nth-child(3n+2){
-    background-color: $scThemeTwo
-  }
-  :nth-child(3n+3){
-    background-color: $scThemeThree
-  }
-}
 .schedule {
   background-image: url('../../assets/images/down-dots.png');
   background-repeat: no-repeat;

@@ -1,6 +1,7 @@
 import React from 'react';
 import './contact.scss';
 import upDots from '../../assets/images/up-dots.png';
+import ContactForm from '../contact-form';
 
 const Contact = () => {
   return(
@@ -18,17 +19,7 @@ const Contact = () => {
         <p>Our expert bakers are waiting to create a unique cupcake bursting with freshness and flavor just for you. Our management team are also waiting for their next event organize.</p>
         <img src={upDots} alt="dots" />
       </div>
-      <div className="contactForm">
-        <h4>Contact Form</h4>
-        <form className="submitForm">
-          <input type="text" placeholder="Name" name="name"/>
-          <input type="text" placeholder="Email" name="email"/>
-          <input type="text" placeholder="Phone" name="phone"/>
-          <input type="text" placeholder="Subject" name="subject"/>
-          <textarea name="message" placeholder="Message"></textarea>
-          <button>Send</button>
-        </form> 
-      </div>
+      <ContactForm />
       <div className="schedule">
         <h4 className="">For phone orders, our work schedule is:</h4>
         <div className="dayTime">
