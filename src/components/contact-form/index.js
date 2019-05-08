@@ -26,6 +26,33 @@ class ContactForm extends Component{
   }
 }
 
+const validate = (formValues) => {
+  const errors = {};
+  const regExpTests = {
+    name: /^[a-z ,.'-]+$/i,
+    email: /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+    phone: /^\d{10}$/,
+    subject: /^[a-z ,.'-[:punct]]+$/i,
+    message: /^[a-z ,.'-]+$/i
+  }
+  const errorMessages = {
+    name: 'Please enter a first and last name.',
+    email: 'That is not a valid email address.',
+    phone: 'Please enter 10 digits for a US phone only.',
+    subject: 'Please enter a subject for your message',
+    message: 'Please enter a message',
+  }
+  Object
+    .keys(errorMessages)
+    .map((key) => {
+      if(!formValues[key] || !regExpTests[key].test(formValues[key])){
+        errors[key] = errorMessages[key];
+      }
+    })
+    return errors;
+}
+
 export default reduxForm({
-  form: 'contactForm'
+  form: 'contactForm',
+  validate
 })(ContactForm);

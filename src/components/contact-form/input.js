@@ -1,9 +1,12 @@
 import React from 'react';
 
 const Input = (props) => {
-  const {input, type="text", placeholder, autoComplete=input.name} = props;
+  const {input, type="text", placeholder, autoComplete=input.name, meta} = props;
   return(
-    <input {...input} type={type} placeholder={placeholder} autoComplete={autoComplete}/>
+    <div>
+      <p className="error">{meta.touched && meta.error}</p>
+      <input {...input} type={type} placeholder={placeholder} autoComplete={autoComplete}/>
+    </div>
   );
 }
 
