@@ -32,8 +32,8 @@ const validate = (formValues) => {
     name: /^[a-z ,.'-]+$/i,
     email: /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
     phone: /^\d{10}$/,
-    subject: /^[a-z ,.'-[:punct]]+$/i,
-    message: /^[a-z ,.'-]+$/i
+    subject: /^[a-z\s.,\/#!$%\^&\*;:{}=\-_`~()\?]+$/i,
+    message: /^[a-z\s.,\/#!$%\^&\*;:{}=\-_`~()\?]+$/i
   }
   const errorMessages = {
     name: 'Please enter a first and last name.',
