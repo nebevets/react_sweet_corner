@@ -1,5 +1,5 @@
+import '../../assets/css/about_services.scss';
 import React from 'react';
-import './about.scss';
 import Box1 from '../../assets/images/box1.png';
 
 const About = () => {
