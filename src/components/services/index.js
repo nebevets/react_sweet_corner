@@ -1,6 +1,6 @@
+import '../../assets/css/about_services.scss';
 import React from 'react';
 import Box2 from '../../assets/images/box2.png';
-import '../about/about.scss';
 
 const Services = () => {
   return(
