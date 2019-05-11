@@ -13,21 +13,22 @@
     input, button {
       height: 35px;
     }
-    textarea {
-      height: 115px;
-      font-family: inherit;
-      font-size: inherit;
-    }
-    button {
-      width: 155px;
-      text-transform: uppercase;
-      color: $dotColor;
-    }
     input, textarea, button {
       border: none;
       font-size: 1em;
       padding: 0 0 0 10px;
       margin-bottom: 1em;
+    }
+    button {
+      width: 155px;
+      text-transform: uppercase;
+      color: $dotColor;
+      padding: 0;
+    }
+    textarea {
+      height: 115px;
+      font-family: inherit;
+      font-size: inherit;
     }
     div:nth-child(3n+1) input{
       background-color: $scThemeOne
@@ -41,7 +42,7 @@
     p.error {
       position: absolute;
       font-size: 12px;
-      color: darkred;
+      color: $error;
       transform: translate(40px, 23px);
     }
   }

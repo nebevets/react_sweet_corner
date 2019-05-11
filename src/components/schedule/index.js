@@ -30,7 +30,8 @@ class Schedule extends Component{
     if(error){
       return(
         <div className="error">
-          <div>Error retrieving any schedule for {new Date().toDateString()}</div>
+          <div>Error retrieving schedule for {new Date().toDateString()}</div>
+          <div className="stack">{error.stack}</div>
         </div>
       );
     }
