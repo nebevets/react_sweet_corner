@@ -1,0 +1,32 @@
+@import '../../assets/css/colors.scss';
+
+.schedule {
+  background-image: url('../../assets/images/down-dots.png');
+  background-repeat: no-repeat;
+  background-position-x: 73%;
+  background-position-y: 35%;
+  font-size: smaller;
+  margin-bottom: 24px;
+  .dayTime {
+    span {
+      margin: 3px;
+      display: inline-block;
+      height: 35px;
+      line-height: 35px;
+      background-color: $dotColor;
+      text-align: center;
+    }
+    span:first-child{
+      width: 152px;
+    }
+    span:last-child{
+      width: 218px;
+    }
+  }
+}
+.error{
+  color: darkred;
+  font-size: large;
+  font-weight: bold;
+  margin-bottom: 24px;
+}

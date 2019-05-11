@@ -2,6 +2,7 @@ import React from 'react';
 import './contact.scss';
 import upDots from '../../assets/images/up-dots.png';
 import ContactForm from '../contact-form';
+import Schedule from '../schedule';
 
 const Contact = () => {
   return(
@@ -20,24 +21,7 @@ const Contact = () => {
         <img src={upDots} alt="dots" />
       </div>
       <ContactForm />
-      <div className="schedule">
-        <h4 className="">For phone orders, our work schedule is:</h4>
-        <div className="dayTime">
-          <span>Monday</span><span>09:00 - 17:00</span>
-        </div>
-        <div className="dayTime">
-          <span>Tuesday</span><span>09:00 - 17:00</span>
-        </div>
-        <div className="dayTime">
-          <span>Wednesday</span><span>09:00 - 19:00</span>
-        </div>
-        <div className="dayTime">
-          <span>Thursday</span><span>09:00 - 19:00</span>
-        </div>
-        <div className="dayTime">
-          <span>Friday</span><span>09:00 - 21:00</span>
-        </div>
-      </div>
+      <Schedule />
     </div>
   );
 }
