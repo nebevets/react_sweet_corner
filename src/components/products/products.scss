@@ -19,23 +19,36 @@
 
 .products{
   text-align: center;
+  :nth-child(3n+1){
+    color: $scThemeThree;
+  }
+  :nth-child(3n+2){
+    color: $scThemeTwo;
+  }
+  :nth-child(3n+3){
+    color: $scThemeOne;
+  }
   .cupCake{
     display: inline-block;
-    width: 30%;
-    height: 320px;
-    border: 1px solid blue;
+    width: 25%;
+    height: 300px;
+    border-top: 12px solid;
     margin: 10px;
     padding: 10px;
     background-color: aliceblue;
-    color: navy;
-    opacity: .8;
     border-radius: 2px;
     vertical-align: top;
+    font-weight: bold;
+    .name{
+      padding-bottom: 1em;
+    }
     .cost{
-      text-align: right;
+      float: right;
+      font-weight: 200;
     }
     .caption{
       font-family: $fancy;
+      font-size: large;
     }
   }  
 }
