@@ -43,12 +43,13 @@
       padding-bottom: 1em;
     }
     .cost{
-      float: right;
+      text-align: right;
       font-weight: 200;
     }
     .caption{
       font-family: $fancy;
       font-size: large;
+      font-weight: normal;
     }
   }  
 }
