@@ -1,0 +1,41 @@
+@import '../../assets/css/colors.scss';
+@import '../../assets/css/fonts.scss';
+
+.productsError {
+  padding: 2%;
+  color: $error;
+  font-size: large;
+  .stack{
+    font-size: small;
+  }
+  .getAllProductsError{
+    font-weight: bold;
+    font-size: x-large;
+  }
+  .errorUrl{
+    font-family: 'Courier New', Courier, monospace;
+  }
+}
+
+.products{
+  text-align: center;
+  .cupCake{
+    display: inline-block;
+    width: 30%;
+    height: 320px;
+    border: 1px solid blue;
+    margin: 10px;
+    padding: 10px;
+    background-color: aliceblue;
+    color: navy;
+    opacity: .8;
+    border-radius: 2px;
+    vertical-align: top;
+    .cost{
+      text-align: right;
+    }
+    .caption{
+      font-family: $fancy;
+    }
+  }  
+}

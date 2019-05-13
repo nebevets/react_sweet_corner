@@ -1,9 +1,10 @@
 @import '../../assets/css/colors.scss';
+@import '../../assets/css/fonts.scss';
 
 .header {
   border-bottom: 24px solid $primaryText;
   .motto {
-    font-family: 'Dancing Script', cursive;
+    font-family: $fancy;
     font-size: 1.5em;
     margin: 0.75em 0;
   }
