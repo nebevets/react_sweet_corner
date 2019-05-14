@@ -1,33 +1,19 @@
 @import '../../assets/css/colors.scss';
 @import '../../assets/css/fonts.scss';
 
-.productsError {
-  padding: 2%;
-  font-size: large;
-  .stack{
-    font-size: small;
-  }
-  .getAllProductsError{
-    font-weight: bold;
-    font-size: x-large;
-  }
-  .errorUrl{
-    font-family: 'Courier New', Courier, monospace;
-  }
-}
-
 .products{
   text-align: center;
-  :nth-child(3n+1){
+  .cupCake:nth-child(3n+1){
     color: $scThemeThree;
   }
-  :nth-child(3n+2){
+  .cupCake:nth-child(3n+2){
     color: $scThemeTwo;
   }
-  :nth-child(3n+3){
+  .cupCake:nth-child(3n+3){
     color: $scThemeOne;
   }
   .cupCake{
+    cursor: pointer;
     display: inline-block;
     width: 25%;
     height: 300px;
@@ -50,5 +36,5 @@
       font-size: large;
       font-weight: normal;
     }
-  }  
+  }
 }

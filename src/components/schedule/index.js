@@ -19,7 +19,6 @@ class Schedule extends Component{
         });
       })
       .catch(error => {
-        console.log(error);
         this.setState({
           error: error
         });

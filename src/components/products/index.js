@@ -3,34 +3,27 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {getAllProducts} from '../../actions';
 import CupCake from './cake';
+import NetworkError from './network_error';
 
 
 class Products extends Component{
+  getProductPage(pid){
+    this.props.history.push(`/products/${pid}`);
+  }
   componentDidMount(){
     this.props.getAllProducts()
   }
   render(){
-    const {data, error} = this.props.products;
-    const cakes = data && data.map(product => <CupCake {...product} key={product.pid} />);
+    const {data, productsError} = this.props.products;
+    const cakes = data && data.map(product => <CupCake onClick={this.getProductPage.bind(this, product.pid)} {...product} key={product.pid} />);
     return(
       <div className="products">
         {
-          error &&
-            <div className="productsError">
-              <div className="stack">
-                {error.stack}
-              </div>
-              <div className="getAllProductsError">
-                {error.getAllProductsError}
-              </div>
-              <div className="errorUrl">
-                {error.config.url}
-              </div>
-            </div>
+          productsError &&
+            <NetworkError stack={productsError.stack} url={productsError.config.url} networkError={productsError.networkError} />
         }
         {
-          data && cakes
-            
+          data && cakes   
         }
       </div>
     );

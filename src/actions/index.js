@@ -12,10 +12,27 @@ export const getAllProducts = () => async dispatch => {
       products
     });
   } catch(err) {
-    err.getAllProductsError = 'There was an error retrieving products from the server:'
+    err.networkError = 'There was an error retrieving products from the server:'
     dispatch({
       type: types.GET_ALL_PRODUCTS_ERROR,
-      error: err
+      productsError: err
+    });
+  }
+}
+
+export const getProductDetails = productId => async dispatch => {
+  try{
+    const response = await axios.get(`${BASE_URL}/api/products/${productId}`);
+    const {product} = response.data;
+    dispatch({
+      type: types.GET_PRODUCT_DETAILS,
+      product
+    });
+  } catch(err) {
+    err.networkError = 'There was an error retrieving product details from the server:'
+    dispatch({
+      type: types.GET_PRODUCT_DETAILS_ERROR,
+      detailsError: err
     });
   }
 }

@@ -1,14 +1,10 @@
 import React from 'react';
 import ThumbNail from './thumbnail';
+import {convertToDollarsandCents} from '../../assets/helpers';
 
-const convertToDollarsandCents = (cents) => {
-  const dollarsAndCents = cents/100;
-  return `$${dollarsAndCents.toFixed(2)}`
-}
-
-export default ({caption, cost, name, thumbnail}) => {
+export default ({caption, cost, name, thumbnail, pid, onClick}) => {
   return(
-    <div className='cupCake'>
+    <div className="cupCake" onClick={onClick}>
       <div className="name">{name}</div>
       <ThumbNail {...thumbnail} />
       <div className="caption">{caption}</div>
