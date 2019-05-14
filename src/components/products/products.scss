@@ -1,0 +1,40 @@
+@import '../../assets/css/colors.scss';
+@import '../../assets/css/fonts.scss';
+
+.products{
+  text-align: center;
+  .cupCake:nth-child(3n+1){
+    color: $scThemeThree;
+  }
+  .cupCake:nth-child(3n+2){
+    color: $scThemeTwo;
+  }
+  .cupCake:nth-child(3n+3){
+    color: $scThemeOne;
+  }
+  .cupCake{
+    cursor: pointer;
+    display: inline-block;
+    width: 25%;
+    height: 300px;
+    border-top: 12px solid;
+    margin: 10px;
+    padding: 10px;
+    background-color: aliceblue;
+    border-radius: 2px;
+    vertical-align: top;
+    font-weight: bold;
+    .name{
+      padding-bottom: 1em;
+    }
+    .cost{
+      text-align: right;
+      font-weight: 200;
+    }
+    .caption{
+      font-family: $fancy;
+      font-size: large;
+      font-weight: normal;
+    }
+  }
+}

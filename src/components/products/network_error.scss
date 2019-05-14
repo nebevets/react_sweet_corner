@@ -1,0 +1,17 @@
+@import '../../assets/css/colors.scss';
+
+.networkError {
+  color: $error;
+  padding: 2%;
+  font-size: large;
+  .stack{
+    font-size: small;
+  }
+  .errorMessage{
+    font-weight: bold;
+    font-size: x-large;
+  }
+  .errorUrl{
+    font-family: 'Courier New', Courier, monospace;
+  }
+}  
