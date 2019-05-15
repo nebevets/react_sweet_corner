@@ -40,5 +40,5 @@ export const getProductDetails = productId => async dispatch => {
 export const clearProductDetails = () => {
   return {
     type: types.CLEAR_PRODUCT_DETAILS,
-  }
+  };
 };
