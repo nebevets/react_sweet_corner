@@ -10,6 +10,12 @@ const DEFAULT_STATE = {
 export default (state=DEFAULT_STATE, action) => {
   const {type, products, product, productsError, detailsError} = action;
   switch(type){
+    case types.CLEAR_PRODUCT_DETAILS:
+      return {
+        ...state,
+        details: null,
+        detailsError: null,
+      }
     case types.GET_ALL_PRODUCTS:
       return {
         ...state,

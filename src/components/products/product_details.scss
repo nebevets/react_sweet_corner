@@ -1,0 +1,29 @@
+@import '../../assets/css/colors.scss';
+@import '../../assets/css/fonts.scss';
+
+.detailsContainer{
+  height: 620px;
+  background-repeat: no-repeat;
+  background-position: top right;
+  margin-bottom: 24px;
+  padding-left: 20px;
+  padding-right: 640px;
+  .caption{
+    font-family: $fancy;
+    color: $scThemeOne;
+    font-size: 1.5em;
+    border-bottom: 1px solid;
+    margin-bottom: 1em;
+  }
+  .description{
+    color: $scThemeThree;
+    word-spacing: 5px;
+    line-height: 1.5em;
+    text-align: justify;
+  }
+  .cost{
+    text-align: right;
+    font-weight: bold;
+    color: $scThemeTwo;
+  }
+}
