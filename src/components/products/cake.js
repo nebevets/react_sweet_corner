@@ -7,8 +7,10 @@ export default ({caption, cost, name, thumbnail, pid, onClick}) => {
     <div className="cupCake" onClick={onClick}>
       <div className="name">{name}</div>
       <ThumbNail {...thumbnail} />
-      <div className="caption">{caption}</div>
-      <div className="cost">{convertToDollarsandCents(cost)}</div>
+      <div className="cupCakeFooter">
+        <div className="caption">{caption}</div>
+        <div className="cost">{convertToDollarsandCents(cost)}</div>
+      </div>
     </div>
   );
 };

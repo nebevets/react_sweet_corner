@@ -24,6 +24,10 @@
     border-radius: 2px;
     vertical-align: top;
     font-weight: bold;
+    &:hover{
+      box-shadow: 20px 15px 35px 5px;
+      transform: translate(-5%, -5%);
+    }
     .name{
       padding-bottom: 1em;
     }
@@ -35,6 +39,8 @@
       font-family: $fancy;
       font-size: large;
       font-weight: normal;
+      border-bottom: 1px solid;
+      margin: 0 -10px;
     }
   }
 }
