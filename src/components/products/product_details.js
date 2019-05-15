@@ -2,7 +2,7 @@ import './product_details.scss';
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {getProductDetails, clearProductDetails} from '../../actions';
-import NetworkError from './network_error';
+import NetworkError from '../network_error';
 import {convertToDollarsandCents} from '../../assets/helpers';
 
 class ProductDetails extends Component{
