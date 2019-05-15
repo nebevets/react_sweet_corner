@@ -3,7 +3,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {getAllProducts} from '../../actions';
 import CupCake from './cake';
-import NetworkError from './network_error';
+import NetworkError from '../network_error';
 
 
 class Products extends Component{
