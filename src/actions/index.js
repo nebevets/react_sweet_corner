@@ -18,7 +18,7 @@ export const getAllProducts = () => async dispatch => {
       productsError: err
     });
   }
-}
+};
 
 export const getProductDetails = productId => async dispatch => {
   try{
@@ -35,4 +35,10 @@ export const getProductDetails = productId => async dispatch => {
       detailsError: err
     });
   }
-}
+};
+
+export const clearProductDetails = () => {
+  return {
+    type: types.CLEAR_PRODUCT_DETAILS,
+  };
+};
