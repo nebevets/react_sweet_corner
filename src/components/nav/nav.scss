@@ -6,7 +6,12 @@
   li {
     display: inline-block;
     list-style: none;
-    margin-right: 2.75em;
+    margin-right: 2em;
+    vertical-align: middle;
+  }
+  :last-child{
+    text-align: center;
+    margin-right: 0.4em;
   }
 }
 a, a:visited, a:active {
