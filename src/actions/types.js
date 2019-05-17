@@ -8,4 +8,6 @@ export default {
   ADD_CART_ITEM_ERROR: 'add_cart_item',
   GET_CART_ITEMS: 'get_cart_items',
   GET_CART_ITEMS_ERROR: 'get_cart_items_error',
+  DELETE_CART_ITEM: 'delete_cart_item',
+  DELETE_CART_ITEM_ERROR: 'delete_cart_item_error',
 };

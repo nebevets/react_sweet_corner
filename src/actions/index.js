@@ -24,12 +24,37 @@ export const addCartItem = (pid, quantity=1) => async dispatch => {
   }
 };
 
-// send auth headers for all cart requests
+// delete /api/cart/items/:itemId Delete that item //deletes that item from your cart
+export const deleteCartItem = (pid) => async dispatch => {
+  console.log('deleteCartItem called with: ', pid);
+  try{
+    const response = await axios.delete(`${BASE_URL}/api/cart/items/${pid}`, withLocalStorageToken());
+    console.dir(response);
+    const {total} = response.data;
+    dispatch({
+      type: types.DELETE_CART_ITEM,
+      total,
+    });
+  } catch(err) {
+    err.networkError = 'There was an error adding to the cart, from the address:'
+    console.log(err);
+    // dispatch({
+    //   type: types.DELETE_CART_ITEM_ERROR,
+    //   cartError: err
+    // });
+  }
+};
+
+// send localStorageToken with all cart requests
+
 // patch /api/cart/:itemId, {quantity:2} //adds two items to cart
 // negative number decreases from the quantity 
+
 // put /api/cart/items/:itemId, {quantity: 3} // sets that item to that amount
-// delete /api/cart/ //deletes your cart and all items...sent with headers
-// delete /api/cart/:itemId //deletes that item from your cart
+
+// delete /api/cart/ //deletes your cart and all items
+
+
 
 export const getCartItems = () => async dispatch => {
   try{
@@ -45,7 +70,7 @@ export const getCartItems = () => async dispatch => {
     err.networkError = 'There was an error retrieving the cart from the address:'
     console.log(err);
     // dispatch({
-    //   type: types.GET_ALL_PRODUCTS_ERROR,
+    //   type: types.GET_CART_ITEMS_ERROR,
     //   productsError: err
     // });
   }
