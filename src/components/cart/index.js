@@ -1,21 +1,48 @@
 import './cart.scss';
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {getCartItems} from '../../actions';
+//import {getCartItems} from '../../actions';
+import {convertToDollarsandCents} from '../../assets/helpers';
 
 class Cart extends Component{
-  componentDidMount(){
-    console.log(this.props.getCartItems());
-  }
+  // componentDidMount(){
+  //   this.props.getCartItems();
+  // }
   render(){
+    const {items} = this.props.cart;
+    const cartItems = items && items.map(item =>{
+      return(
+        <div className="cartItems" key={item.itemId}>
+          <div className="name">
+            <img src={item.thumbnail.url} alt={item.thumbnail.altText} />
+            <span>{item.name}</span>
+          </div>
+          <div className="quantity">{item.quantity}</div>
+          <div className="total">{convertToDollarsandCents(item.total)}</div>
+          <div className="removeItem">
+            <i className="material-icons">remove_shopping_cart</i>
+          </div>
+        </div>
+      );
+    });
     return(
-      <div className="cart">Shopping Cart
-      <i className="material-icons">remove_shopping_cart</i>
+      <div className="cart">
+        <h2>Your Cart:</h2>
+        {
+          items && cartItems
+        }
       </div>
     );
   }
 }
 
-export default connect(null, {
+const mapStateToProps = (state) => {
+  const {cart} = state;
+  return {
+    cart
+  }
+}
+
+export default connect(mapStateToProps/*, {
   getCartItems
-})(Cart);
+}*/)(Cart);

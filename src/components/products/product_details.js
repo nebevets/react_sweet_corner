@@ -30,8 +30,8 @@ class ProductDetails extends Component{
     });
   }
   async handleAddCartItem(pid, quantity){
-    await this.props.addCartItem(pid, quantity);
-    this.props.history.push('/products');
+      await this.props.addCartItem(pid, quantity);
+      this.props.history.push('/products');
   }
   render(){
     const {details, detailsError} = this.props;
@@ -66,7 +66,6 @@ class ProductDetails extends Component{
 }
 
 const mapStateToProps = (state) => {
-  console.log(state);
   const {details, detailsError} = state.products;
   return {
     details,

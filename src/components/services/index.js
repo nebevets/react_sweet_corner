@@ -6,7 +6,7 @@ const Services = () => {
   return(
     <div className="services">
       <div className="contentBackground">
-        <h3>We cherish the sweet moments...</h3>
+        <h3>Make your nuptials even sweeter...</h3>
         <div className="content">
           <p>
              Couples looking beyond the traditional wedding, Sweet Corner offers a modern-day alternative to traditional wedding cake. Stick your wedding cupcakes on towering tiers or treat each guest to a sweet token of your wedded bliss.

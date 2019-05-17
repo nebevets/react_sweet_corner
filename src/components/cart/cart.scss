@@ -2,4 +2,37 @@
 
 .cart{
   padding: 3%;
+  h2{
+    margin: 0 0 1em;
+    border-bottom: 1px solid;
+  }
+  .cartItems{
+    padding: 0.5em 1em;
+    &:nth-child(even){
+      background-color: aliceblue;
+    }
+    div{
+      display: inline-block;
+      vertical-align: middle;
+    }
+    .name{
+      font-size: large;
+      width: 50%;
+      span{
+        padding-left: 1em;
+      }
+    }
+    .quantity{
+      text-align: right;
+      width: 10%;
+    }
+    .total{
+      text-align: right;
+      width: 10%;
+    }
+    img{
+      height: 4em;
+      vertical-align: middle;
+    }
+  }
 }

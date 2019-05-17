@@ -1,0 +1,23 @@
+@import '../../assets/css/colors.scss';
+
+.shoppingCart{
+  position: relative;
+  text-align: center;
+  margin-right: 1em;
+  display: inline-block;
+  list-style: none;
+  vertical-align: middle;
+  .total{
+    position: absolute;
+    padding: 2px 4px;
+    border-radius: 10px;
+    background-color: $scThemeThree;
+    right: -10px;
+    top: -10px;
+    font-size: x-small;
+    a:any-link{
+      color: $dotColor;
+      text-decoration: none;
+    }
+  }
+}
