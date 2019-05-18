@@ -9,6 +9,9 @@ import Services from './services';
 import About from './about';
 import Contact from './contact';
 import Cart from './cart';
+import Account from './account';
+import SignIn from './sign-in';
+import SignUp from './sign-up';
 import Footer from './footer';
 
 const App = () => (
@@ -22,6 +25,9 @@ const App = () => (
             <Route path="/about" component={About} />
             <Route path="/contact" component={Contact} />
             <Route path="/cart" component={Cart} />
+            <Route path="/sign-in" component={SignIn} />
+            <Route path="/sign-up" component={SignUp} />
+            <Route path="/account" component={Account} />
             <Footer/>
         </div>
     </div>

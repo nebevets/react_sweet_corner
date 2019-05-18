@@ -1,4 +1,5 @@
 import {CART_TOKEN} from '../../actions/index';
+import {AUTH_TOKEN} from '../../actions/index';
 
 export const convertToDollarsandCents = (cents) => {
   const dollarsAndCents = cents/100;
@@ -8,7 +9,8 @@ export const convertToDollarsandCents = (cents) => {
 export const withLocalStorageToken = () => {
   return {
     headers: {
-      'x-cart-token': localStorage.getItem(CART_TOKEN) || ''
+      'authorization': localStorage.getItem(AUTH_TOKEN) || '',
+      'x-cart-token': localStorage.getItem(CART_TOKEN) || '',
     }
   }
 }

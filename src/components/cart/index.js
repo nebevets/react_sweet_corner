@@ -1,17 +1,19 @@
 import './cart.scss';
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {deleteCartItem} from '../../actions';
+import {getCartItems, deleteCartItem} from '../../actions';
 import {convertToDollarsandCents} from '../../assets/helpers';
 
 class Cart extends Component{
-  // componentDidMount(){
-  //   this.props.getCartItems();
-  // }
-  removeThisItem(pid){
-    this.props.deleteCartItem(pid);
+  componentDidMount(){
+    this.props.getCartItems();
+  }
+  async removeThisItem(pid){
+    await this.props.deleteCartItem(pid);
+    this.props.getCartItems();
   }
   render(){
+    // console.log('cart');
     const {items} = this.props.cart;
     const cartItems = items && items.map(item =>{
       return(
@@ -47,5 +49,6 @@ const mapStateToProps = (state) => {
 }
 
 export default connect(mapStateToProps, {
-  deleteCartItem
+  deleteCartItem,
+  getCartItems
 })(Cart);

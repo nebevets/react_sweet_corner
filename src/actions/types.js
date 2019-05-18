@@ -10,4 +10,10 @@ export default {
   GET_CART_ITEMS_ERROR: 'get_cart_items_error',
   DELETE_CART_ITEM: 'delete_cart_item',
   DELETE_CART_ITEM_ERROR: 'delete_cart_item_error',
+  CLEAR_ERRORS: 'clear_errors',
+  SIGN_UP_ERROR: 'sign_up_error',
+  SIGN_IN_ERROR: 'sign_in_error',
+  SIGN_IN: 'sign_in',
+  SIGN_OUT: 'sign_out',
+  SIGN_UP: 'sign_up',
 };

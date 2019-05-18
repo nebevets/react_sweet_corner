@@ -4,12 +4,13 @@ import {withLocalStorageToken} from '../assets/helpers';
 
 const BASE_URL = "http://api.sc.lfzprototypes.com";
 export const CART_TOKEN = 'cart-token';
+export const AUTH_TOKEN = 'auth-token';
 
 export const addCartItem = (pid, quantity=1) => async dispatch => {
   try{
     const response = await axios.post(`${BASE_URL}/api/cart/items/${pid}`, {quantity}, withLocalStorageToken());
     const {total, cartToken} = response.data;
-    localStorage.setItem(CART_TOKEN, cartToken);
+    cartToken && localStorage.setItem(CART_TOKEN, cartToken);
     dispatch({
       type: types.ADD_CART_ITEM,
       total,
@@ -115,3 +116,76 @@ export const clearProductDetails = () => {
     type: types.CLEAR_PRODUCT_DETAILS,
   };
 };
+
+export const clearErrors = () => ({type: types.CLEAR_ERRORS});
+// parens are need to distiguish between function braces and object braces
+
+export const verifyAuth = () =>
+  async dispatch => {
+    try {
+      const response = await axios.get('http://api.sc.lfzprototypes.com/auth/sign-in', withLocalStorageToken());
+      dispatch({
+        type: types.SIGN_IN,
+        user: response.data.user
+      });
+    } catch(err) {
+      localStorage.removeItem('sc_token');
+      dispatch({
+        type: types.SIGN_OUT
+      });
+    }
+  };
+
+export const signIn = signInData => 
+  async dispatch => {
+    try {
+      const response = await axios.post('http://api.sc.lfzprototypes.com/auth/sign-in', signInData, withLocalStorageToken());
+      console.log('sign in response' , response);
+      const {token, user} = response.data;
+      localStorage.setItem(AUTH_TOKEN, token);
+      dispatch({
+        type: types.SIGN_IN,
+        user
+      });
+    } catch(err) {
+      console.log(err);
+      dispatch({
+        type: types.SIGN_IN_ERROR,
+        error: 'Invalid email or password'
+      });
+    }
+  }
+// sbenedict@hotmail.com, asDF1234!
+// maxx@gmail.com, jobe@gmail.com
+// jwt json web token is given
+
+export const signOut = () => {
+  localStorage.removeItem(AUTH_TOKEN);
+  return {
+    type: types.SIGN_OUT
+  }
+};
+
+export const signUp = signUpData => 
+  async (dispatch) => {
+    try {
+      const response = await axios.post('http://api.sc.lfzprototypes.com/auth/create-account', signUpData);
+      //console.log(response);
+      const {token, user} = response.data;
+      localStorage.setItem('sc_token', token);
+      dispatch({
+        type: types.SIGN_UP,
+        user
+      });
+    } catch(err) {
+      console.log(err.response);
+      let errorMessage = 'Error creating account';
+      if(err.response.status === 422){
+        errorMessage = err.response.data.errors || errorMessage;
+      }
+      dispatch({
+        type: types.SIGN_UP_ERROR,
+        error: errorMessage
+      });
+    }
+  };

@@ -33,7 +33,8 @@ export default (state=DEFAULT_STATE, action) => {
         total,
         error: null,
       }
+    case types.SIGN_OUT:
     default:
-      return state;
+      return DEFAULT_STATE;
   }
 };

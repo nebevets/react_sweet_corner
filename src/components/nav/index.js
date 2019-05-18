@@ -2,6 +2,7 @@ import './nav.scss';
 import React from 'react';
 import {Link} from 'react-router-dom';
 import ShoppingCart from './shopping_cart';
+import User from './user';
 
 const Nav = () => {
   return(
@@ -12,6 +13,7 @@ const Nav = () => {
       <li className="navItem"><Link to="/about">about us</Link></li>
       <li className="navItem"><Link to="/contact">contact</Link></li>
       <ShoppingCart/>
+      <User/>
     </ul>
   );
 }

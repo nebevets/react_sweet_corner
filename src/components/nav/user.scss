@@ -1,0 +1,23 @@
+@import '../../assets/css/colors.scss';
+
+.user{
+  display: inline-block;
+  margin-right: 1em;
+  vertical-align: middle;
+  cursor: pointer;
+  position: relative;
+  .menuItem{
+    position: absolute;
+    top: 22px;
+    background-color: $dotColor;
+    color: $scThemeThree;
+    text-transform: capitalize;
+    width: 75px;
+    right: 3px;
+    font-size: small;
+    padding: 5px 10px;
+    a {
+      color: inherit;
+    }
+  }
+}
