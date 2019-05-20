@@ -17,6 +17,7 @@ export default (state=DEFAULT_STATE, action) => {
         detailsError: null,
       }
     case types.GET_ALL_PRODUCTS:
+      console.log('state before get all products returns: ', state);
       return {
         ...state,
         data: products,

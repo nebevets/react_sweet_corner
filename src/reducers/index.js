@@ -8,7 +8,7 @@ const rootReducer = combineReducers({
   form: formReducer,
   products: productsReducer,
   cart: cartReducer,
-  user: userReducer,
+  login: userReducer,
 });
 
 export default rootReducer;

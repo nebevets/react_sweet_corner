@@ -11,6 +11,13 @@ class User extends Component{
       hover: false
     }
   }
+  
+  componentDidMount(){
+    console.log('cDM: user icon');
+  }
+  componentDidUpdate(){
+    console.log('cDU: user icon');
+  }
   handleSignOut(){
     this.props.signOut();
   }
@@ -26,8 +33,7 @@ class User extends Component{
   }
   render(){
     const {hover} = this.state;
-    const {user:{auth}} = this.props;
-    //console.log(this.props);
+    const {auth} = this.props;
     return(
       <li className="user" onMouseEnter={this.handleMouseEnter.bind(this)} onMouseLeave={this.handleMouseLeave.bind(this)}>
           <i className="material-icons">account_box</i>
@@ -49,10 +55,10 @@ class User extends Component{
 }
 
 const mapStateToProps = (state) => {
-  console.log(state);
-  const {user} = state;
+  console.log("state from user icon", state);
+  const {auth} = state.login;
   return {
-    user
+    auth
   }
 };
 

@@ -7,14 +7,14 @@ import Input from '../input';
 class SignIn extends Component{
   async handleSignIn(values){
     await this.props.signIn(values);
-    this.props.history.push('/cart');
+    //this.props.history.push('/cart');
   }
   componentWillUnmount(){
     this.props.clearErrors();
   }
   render(){
-    const {authError, handleSubmit} = this.props;
-    console.log(this.props);
+    const {signInError, handleSubmit} = this.props;
+    // console.log('signIn props: ', this.props);
     return(
       <form className="signInForm" onSubmit={handleSubmit(this.handleSignIn.bind(this))}>
         <div className="row">
@@ -25,7 +25,7 @@ class SignIn extends Component{
         </div>
         <div className="row">
           <button className="btnSignIn">Sign In</button>
-          <p className="red-text">{authError}</p>
+          <p className="red-text">{signInError}</p>
         </div>
       </form>
     );
@@ -44,9 +44,10 @@ function validate({email, password}){
 }
 
 const mapStateToProps = (state) => {
-  const {signInError} = state.user;
+  console.log('state from signIn: ', state);
+  const {signInError} = state.login;
   return {
-    authError: signInError //because redux form already has an error key that will overwrite
+    signInError //because redux form already has an 'error' key that will overwrite
   };
 }
 

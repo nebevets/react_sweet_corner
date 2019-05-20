@@ -77,6 +77,25 @@ export const getCartItems = () => async dispatch => {
   }
 };
 
+export const getCartTotals = () => async dispatch => {
+  try{
+    const response = await axios.get(`${BASE_URL}/api/cart/totals`, withLocalStorageToken());
+    console.log(response);
+    const {total} = response.data;
+    dispatch({
+      type: types.GET_CART_TOTALS,
+      total
+    });
+  } catch(err) {
+    err.networkError = 'There was an error retrieving the cart totals from the address:'
+    console.log(err);
+    // dispatch({
+    //   type: types.GET_CART_ITEMS_ERROR,
+    //   productsError: err
+    // });
+  }
+};
+
 export const getAllProducts = () => async dispatch => {
   try{
     const response = await axios.get(`${BASE_URL}/api/products`);

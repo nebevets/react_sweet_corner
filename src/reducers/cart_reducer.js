@@ -8,6 +8,7 @@ const DEFAULT_STATE = {
 export default (state=DEFAULT_STATE, action) => {
   const {type, items, total, error} = action;
   switch(type){
+    case types.GET_CART_TOTALS:
     case types.ADD_CART_ITEM:
       return {
         ...state,
@@ -34,7 +35,8 @@ export default (state=DEFAULT_STATE, action) => {
         error: null,
       }
     case types.SIGN_OUT:
-    default:
       return DEFAULT_STATE;
+    default:
+      return state;
   }
 };
