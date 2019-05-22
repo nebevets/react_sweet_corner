@@ -1,0 +1,15 @@
+@import '../../assets/css/colors.scss';
+
+.sweetButton{
+  user-select: none;
+  border: 2px solid transparent;
+  padding: 7px 5px;
+  vertical-align: baseline;
+  &:active{
+    border: 2px inset $dotColor;
+  }
+  span{
+    cursor: pointer;
+    vertical-align: middle;
+  }
+}

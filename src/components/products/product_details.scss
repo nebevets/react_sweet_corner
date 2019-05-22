@@ -26,4 +26,22 @@
     font-weight: bold;
     color: $scThemeTwo;
   }
+  .addToCart{
+    user-select: none;
+    color: $dotColor;
+    text-align: right;
+    background-color: $scThemeThree;
+    margin-top: 1em;
+    padding: 1em 0.5em;
+    input{
+      user-select: unset;
+      width: 3em;
+      font-size: 1em;
+      margin-right: 0.75em;
+      background-color: $dotColor;
+      color: $scThemeThree;
+      font-weight: bolder;
+      text-align: center;
+    }
+  }
 }

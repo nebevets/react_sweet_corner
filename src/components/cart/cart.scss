@@ -1,0 +1,37 @@
+@import '../../assets/css/colors.scss';
+
+.cart{
+  padding: 3%;
+  h2{
+    margin: 0 0 1em;
+    border-bottom: 1px solid;
+  }
+  .cartItems{
+    padding: 0.5em 1em;
+    &:nth-child(even){
+      background-color: aliceblue;
+    }
+    div{
+      display: inline-block;
+    }
+    .name{
+      font-size: large;
+      width: 40%;
+      span{
+        padding-left: 1em;
+      }
+    }
+    .quantityChanger{
+      text-align: right;
+      width: 20%;
+    }
+    .total{
+      text-align: center;
+      width: 15%;
+    }
+    img{
+      height: 4em;
+      vertical-align: middle;
+    }
+  }
+}

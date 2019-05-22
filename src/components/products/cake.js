@@ -2,7 +2,7 @@ import React from 'react';
 import ThumbNail from './thumbnail';
 import {convertToDollarsandCents} from '../../assets/helpers';
 
-export default ({caption, cost, name, thumbnail, pid, onClick}) => {
+export default ({caption, cost, name, thumbnail, onClick}) => {
   return(
     <div className="cupCake" onClick={onClick}>
       <div className="name">{name}</div>

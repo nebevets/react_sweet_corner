@@ -3,13 +3,14 @@
 .main-nav {
   text-align: right;
   text-transform: uppercase;
-  li {
+  .navItem {
     display: inline-block;
     list-style: none;
-    margin-right: 2.75em;
+    margin-right: 2em;
+    vertical-align: middle;
   }
 }
-a, a:visited, a:active {
+a:any-link {
   color: $primaryText;
   text-decoration: none;
 }
