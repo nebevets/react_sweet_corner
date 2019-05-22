@@ -11,13 +11,6 @@ class User extends Component{
       hover: false
     }
   }
-  
-  componentDidMount(){
-    console.log('cDM: user icon');
-  }
-  componentDidUpdate(){
-    console.log('cDU: user icon');
-  }
   handleSignOut(){
     this.props.signOut();
   }
@@ -55,7 +48,7 @@ class User extends Component{
 }
 
 const mapStateToProps = (state) => {
-  console.log("state from user icon", state);
+  // console.log("state from user icon", state);
   const {auth} = state.login;
   return {
     auth

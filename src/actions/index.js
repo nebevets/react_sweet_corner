@@ -27,7 +27,6 @@ export const addCartItem = (pid, quantity=1) => async dispatch => {
 
 // delete /api/cart/items/:itemId Delete that item //deletes that item from your cart
 export const deleteCartItem = (pid) => async dispatch => {
-  console.log('deleteCartItem called with: ', pid);
   try{
     const response = await axios.delete(`${BASE_URL}/api/cart/items/${pid}`, withLocalStorageToken());
     console.dir(response);
@@ -46,21 +45,32 @@ export const deleteCartItem = (pid) => async dispatch => {
   }
 };
 
-// send localStorageToken with all cart requests
-
 // patch /api/cart/:itemId, {quantity:2} //adds two items to cart
 // negative number decreases from the quantity 
-
-// put /api/cart/items/:itemId, {quantity: 3} // sets that item to that amount
-
 // delete /api/cart/ //deletes your cart and all items
 
-
+// put /api/cart/items/:itemId, {quantity: 3} // sets that item to that amount
+export const putCartItem = (pid, quantity=1) => async dispatch => {
+  try{
+    const response = await axios.put(`${BASE_URL}/api/cart/items/${pid}`, {quantity}, withLocalStorageToken());
+    const {total} = response.data;
+    dispatch({
+      type: types.PUT_CART_ITEM,
+      total,
+    });
+  } catch(err) {
+    err.networkError = 'There was an error changing the quantity, from the address:'
+    console.log(err);
+    dispatch({
+      type: types.PUT_CART_ITEM_ERROR,
+      cartError: err
+    });
+  }
+};
 
 export const getCartItems = () => async dispatch => {
   try{
     const response = await axios.get(`${BASE_URL}/api/cart`, withLocalStorageToken());
-    // console.log(response);
     const {items, total} = response.data;
     dispatch({
       type: types.GET_CART_ITEMS,
@@ -80,7 +90,6 @@ export const getCartItems = () => async dispatch => {
 export const getCartTotals = () => async dispatch => {
   try{
     const response = await axios.get(`${BASE_URL}/api/cart/totals`, withLocalStorageToken());
-    console.log(response);
     const {total} = response.data;
     dispatch({
       type: types.GET_CART_TOTALS,
@@ -155,6 +164,7 @@ export const verifyAuth = () =>
     }
   };
 
+// steveben@msn.com, asDF1234!
 export const signIn = signInData => 
   async dispatch => {
     try {
@@ -174,9 +184,6 @@ export const signIn = signInData =>
       });
     }
   }
-// sbenedict@hotmail.com, asDF1234!
-// maxx@gmail.com, jobe@gmail.com
-// jwt json web token is given
 
 export const signOut = () => {
   localStorage.removeItem(AUTH_TOKEN);
@@ -189,7 +196,6 @@ export const signUp = signUpData =>
   async (dispatch) => {
     try {
       const response = await axios.post('http://api.sc.lfzprototypes.com/auth/create-account', signUpData);
-      //console.log(response);
       const {token, user} = response.data;
       localStorage.setItem('sc_token', token);
       dispatch({

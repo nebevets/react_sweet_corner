@@ -33,10 +33,6 @@
     background-color: $scThemeThree;
     margin-top: 1em;
     padding: 1em 0.5em;
-    span{
-      cursor: pointer;
-      vertical-align: middle;
-    }
     input{
       user-select: unset;
       width: 3em;
@@ -46,14 +42,6 @@
       color: $scThemeThree;
       font-weight: bolder;
       text-align: center;
-    }
-    .clickWrapper{
-      border: 2px solid $scThemeThree;
-      padding: 7px 5px;
-      vertical-align: baseline;
-      &:active{
-        border: 2px inset $dotColor;
-      }
     }
   }
 }

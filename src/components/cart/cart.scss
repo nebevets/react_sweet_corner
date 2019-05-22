@@ -13,22 +13,21 @@
     }
     div{
       display: inline-block;
-      vertical-align: middle;
     }
     .name{
       font-size: large;
-      width: 50%;
+      width: 40%;
       span{
         padding-left: 1em;
       }
     }
-    .quantity{
+    .quantityChanger{
       text-align: right;
-      width: 10%;
+      width: 20%;
     }
     .total{
-      text-align: right;
-      width: 10%;
+      text-align: center;
+      width: 15%;
     }
     img{
       height: 4em;

@@ -6,6 +6,8 @@ export default {
   CLEAR_PRODUCT_DETAILS: 'clear_product_details',
   ADD_CART_ITEM: 'add_cart_item',
   ADD_CART_ITEM_ERROR: 'add_cart_item',
+  PUT_CART_ITEM: 'add_cart_item',
+  PUT_CART_ITEM_ERROR: 'add_cart_item',
   GET_CART_TOTALS: 'get_cart_totals',
   GET_CART_ITEMS: 'get_cart_items',
   GET_CART_ITEMS_ERROR: 'get_cart_items_error',

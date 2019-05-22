@@ -7,7 +7,9 @@ import Input from '../input';
 class SignIn extends Component{
   async handleSignIn(values){
     await this.props.signIn(values);
-    //this.props.history.push('/cart');
+    if(this.props.auth){
+      this.props.history.push('/cart');
+    }
   }
   componentWillUnmount(){
     this.props.clearErrors();
@@ -44,9 +46,10 @@ function validate({email, password}){
 }
 
 const mapStateToProps = (state) => {
-  console.log('state from signIn: ', state);
-  const {signInError} = state.login;
+  // console.log('state from signIn: ', state);
+  const {signInError, auth} = state.login;
   return {
+    auth,
     signInError //because redux form already has an 'error' key that will overwrite
   };
 }

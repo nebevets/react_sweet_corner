@@ -1,0 +1,14 @@
+@import '../../assets/css/colors.scss';
+
+.quantityChanger{
+  input{
+    user-select: unset;
+    width: 3em;
+    font-size: 1em;
+    margin-right: 0.75em;
+    background-color: $dotColor;
+    color: $primaryText;
+    font-weight: bolder;
+    text-align: center;
+  }
+}

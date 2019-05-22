@@ -4,6 +4,7 @@ import {connect} from 'react-redux';
 import {getProductDetails, clearProductDetails, addCartItem} from '../../actions';
 import NetworkError from '../network_error';
 import {convertToDollarsandCents} from '../../assets/helpers';
+import Button from '../button';
 
 class ProductDetails extends Component{
   constructor(props){
@@ -49,10 +50,10 @@ class ProductDetails extends Component{
               </div>
               <div className="addToCart">
                 <input name="quantity" type="number" value={quantity} onChange={this.handleQuantity.bind(this)}/>
-                <span className="clickWrapper" onClick={this.handleAddCartItem.bind(this, details.pid, quantity)} title="Click to Add...">
+                <Button onClick={this.handleAddCartItem.bind(this, details.pid, quantity)} title="Click to Add...">
                   <span>Add to</span>
                   <span className="material-icons">add_shopping_cart</span>
-                </span>
+                </Button>
               </div>
             </div>
         }

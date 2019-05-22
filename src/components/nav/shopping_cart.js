@@ -33,7 +33,7 @@ class ShoppingCart extends Component{
 }
 
 const mapStateToProps = (state) => {
-  console.log('state from shoppingcart', state);
+  // console.log('state from shoppingcart', state);
   const {auth} = state.login;
   const {total} = state.cart;
   return {
