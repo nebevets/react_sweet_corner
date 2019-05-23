@@ -6,28 +6,31 @@
     margin: 0 0 1em;
     border-bottom: 1px solid;
   }
-  .cartItems{
+  .cartItem{
     padding: 0.5em 1em;
-    &:nth-child(even){
+    &:nth-child(odd){
       background-color: aliceblue;
     }
     div{
+      text-align: right;
       display: inline-block;
     }
     .name{
       font-size: large;
+      text-align: left;
       width: 40%;
       span{
         padding-left: 1em;
       }
     }
     .quantityChanger{
-      text-align: right;
       width: 20%;
     }
     .total{
-      text-align: center;
-      width: 15%;
+      width: 10%;
+    }
+    .removeItem{
+      padding-left: 2em;
     }
     img{
       height: 4em;

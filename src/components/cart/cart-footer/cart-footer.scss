@@ -1,0 +1,18 @@
+@import '../../../assets/css/colors.scss';
+
+.cartFooter{
+  text-align: right;
+  height: 4em;
+  line-height: 4em;
+  border-top: 1px solid $scThemeOne;
+  div {
+    display: inline-block;
+    &.total{
+      vertical-align: middle;
+      padding-right: 0.5em;
+    }
+    &.checkOut{
+      width: 30%;
+    }
+  }
+}

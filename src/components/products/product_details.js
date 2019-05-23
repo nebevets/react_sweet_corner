@@ -32,7 +32,7 @@ class ProductDetails extends Component{
   }
   async handleAddCartItem(pid, quantity){
       await this.props.addCartItem(pid, quantity);
-      this.props.history.push('/products');
+      this.props.history.push('/cart');
   }
   render(){
     const {details, detailsError} = this.props;
