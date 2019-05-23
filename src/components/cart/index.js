@@ -5,10 +5,11 @@ import {getCartItems, deleteCartItem, putCartItem} from '../../actions';
 import {convertToDollarsandCents} from '../../assets/helpers';
 import Quantity from '../quantity';
 import Button from '../button';
+import CartHeader from './cart-header';
+import CartFooter from './cart-footer';
 
 // delete /api/cart/:cartId Delete cart and all items in it
 // patch /api/cart/:itemId, { quantity: 2 } add 2 items to that items qty
-
 
 class Cart extends Component{
   componentDidMount(){
@@ -25,38 +26,50 @@ class Cart extends Component{
     this.props.getCartItems();
   }
   render(){
-    const {items} = this.props.cart;
-    const cartItems = items && items.map(item =>{
-      return(
-        <div className="cartItems" key={item.itemId}>
-          <div className="name">
-            <img src={item.thumbnail.url} alt={item.thumbnail.altText} />
-            <span>{item.name}</span>
+    const {items, total} = this.props.cart;
+    const {user} = this.props.login;
+    if(items && items.length){
+      const cartItems = items.map(item =>{
+        return(
+          <div className="cartItem" key={item.itemId}>
+            <div className="name">
+              <img src={item.thumbnail.url} alt={item.thumbnail.altText} />
+              <span>{item.name}</span>
+            </div>
+            <Quantity quantity={item.quantity} pid={item.itemId} updateQuantity={this.handleUpdateQuantity.bind(this)} />
+            <div className="total">{convertToDollarsandCents(item.total)}</div>
+            <div className="removeItem">
+              <Button onClick={this.removeThisItem.bind(this, item.itemId)} title="Delete this item...">
+                <span>Delete from </span>
+                <span className="material-icons">remove_shopping_cart</span>
+              </Button>
+            </div>
           </div>
-          <Quantity quantity={item.quantity} pid={item.itemId} updateQuantity={this.handleUpdateQuantity.bind(this)} />
-          <div className="total">{convertToDollarsandCents(item.total)}</div>
-          <Button onClick={this.removeThisItem.bind(this, item.itemId)} title="Delete this item...">
-            <span>Delete from </span>
-            <span className="material-icons">remove_shopping_cart</span>
-          </Button>
+        );
+      });
+      return(
+        <div className="cart">
+          <h2>Cart for {user.name}:</h2>
+            <CartHeader/>
+            {
+              cartItems
+            }
+            <CartFooter total={convertToDollarsandCents(total.cost)} />
         </div>
       );
-    });
+    }
     return(
-      <div className="cart">
-        <h2>Your Cart:</h2>
-        {
-          items && cartItems
-        }
-      </div>
+      <div>Nothing here yet...</div>
     );
   }
 }
 
 const mapStateToProps = (state) => {
-  const {cart} = state;
+  const {cart, login} = state;
+  console.log(state);
   return {
-    cart
+    cart,
+    login,
   }
 }
 

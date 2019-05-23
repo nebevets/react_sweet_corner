@@ -1,0 +1,24 @@
+@import '../../../assets/css/colors.scss';
+@import '../../../assets/css/fonts.scss';
+
+.cartHeader{
+  color: $scThemeOne;
+  font-family: $fancy;
+  border-bottom: 1px solid;
+  div{
+    text-align: left;
+    padding-left: 0.5em;
+    display: inline-block;
+    font-size: 1.5em;
+    vertical-align: baseline;
+    &.name{
+      width: 40%;
+    }
+    &.quantity{
+      width: 20%;
+    }
+    &.total{
+      width: 15%;
+    }
+  }
+}
