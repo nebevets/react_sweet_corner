@@ -10,6 +10,7 @@ import About from './about';
 import Contact from './contact';
 import Cart from './cart';
 import Account from './account';
+import Orders from './orders';
 import SignIn from './sign-in';
 import SignUp from './sign-up';
 import Footer from './footer';
@@ -28,6 +29,7 @@ const App = () => (
             <Route path="/sign-in" component={SignIn} />
             <Route path="/sign-up" component={SignUp} />
             <Route path="/account" component={Account} />
+            <Route path="/orders" component={Orders} />
             <Footer/>
         </div>
     </div>

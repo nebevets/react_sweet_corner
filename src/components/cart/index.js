@@ -1,7 +1,7 @@
 import './cart.scss';
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {getCartItems, deleteCartItem, putCartItem} from '../../actions';
+import {getCartItems, deleteCartItem, putCartItem, checkOutCart} from '../../actions';
 import {convertToDollarsandCents} from '../../assets/helpers';
 import Quantity from '../quantity';
 import Button from '../button';
@@ -54,7 +54,7 @@ class Cart extends Component{
             {
               cartItems
             }
-            <CartFooter total={convertToDollarsandCents(total.cost)} />
+            <CartFooter checkOutCart={this.props.checkOutCart} total={convertToDollarsandCents(total.cost)} />
         </div>
       );
     }
@@ -76,5 +76,6 @@ const mapStateToProps = (state) => {
 export default connect(mapStateToProps, {
   deleteCartItem,
   getCartItems,
-  putCartItem
+  putCartItem,
+  checkOutCart
 })(Cart);
