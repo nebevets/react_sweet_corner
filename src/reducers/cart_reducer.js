@@ -6,7 +6,9 @@ const DEFAULT_STATE = {
 };
 
 export default (state=DEFAULT_STATE, action) => {
-  const {type, items, total, error} = action;
+  console.log(state);
+  const {type, items, total, id, message, error} = action;
+  console.log('cart action: ', action);
   switch(type){
     case types.GET_CART_TOTALS:
     case types.PUT_CART_ITEM:
@@ -35,6 +37,12 @@ export default (state=DEFAULT_STATE, action) => {
         items,
         total,
         error: null,
+      };
+    case types.CHECK_OUT_CART:
+      return {
+        id,
+        message,
+        ...DEFAULT_STATE,
       }
     case types.SIGN_OUT:
       return DEFAULT_STATE;

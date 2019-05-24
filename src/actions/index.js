@@ -10,7 +10,7 @@ export const addCartItem = (pid, quantity=1) => async dispatch => {
   try{
     const response = await axios.post(`${BASE_URL}/api/cart/items/${pid}`, {quantity}, withLocalStorageToken());
     const {total, cartToken} = response.data;
-    cartToken && localStorage.setItem(CART_TOKEN, cartToken);
+    //cartToken && localStorage.setItem(CART_TOKEN, cartToken); // TODO
     dispatch({
       type: types.ADD_CART_ITEM,
       total,
@@ -105,6 +105,45 @@ export const getCartTotals = () => async dispatch => {
   }
 };
 
+// it seems that state will have to be reset to default when a order is successful and redirect to another page
+// that shows the order number, message and order look up?
+export const checkOutCart = () => async dispatch => {
+  try{
+    const response = await axios.post(`${BASE_URL}/api/orders`, {}, withLocalStorageToken());
+    const {id, message} = response.data;
+    dispatch({
+      type: types.CHECK_OUT_CART,
+      id,
+      message,
+    });
+  } catch(err) {
+    err.networkError = 'There was an error changing the quantity, from the address:'
+    console.log(err);
+    // dispatch({
+    //   type: types.CHECK_OUT_CART_ERROR,
+    //   cartError: err
+    // });
+  }
+};
+
+export const getAllOrders = () => async dispatch => {
+  try{
+    const response = await axios.get(`${BASE_URL}/api/orders`, withLocalStorageToken());
+    console.log(response);
+    const {orders} = response.data;
+    dispatch({
+      type: types.GET_ALL_ORDERS,
+      orders
+    });
+  } catch(err) {
+    err.networkError = 'There was an error retrieving products from the address:'
+    // dispatch({
+    //   type: types.GET_ALL_ORDERS_ERROR,
+    //   ordersError: err
+    // });
+  }
+};
+
 export const getAllProducts = () => async dispatch => {
   try{
     const response = await axios.get(`${BASE_URL}/api/products`);
@@ -157,7 +196,7 @@ export const verifyAuth = () =>
         user: response.data.user
       });
     } catch(err) {
-      localStorage.removeItem('sc_token');
+      localStorage.removeItem('sc_token'); // TODO
       dispatch({
         type: types.SIGN_OUT
       });
@@ -197,7 +236,7 @@ export const signUp = signUpData =>
     try {
       const response = await axios.post('http://api.sc.lfzprototypes.com/auth/create-account', signUpData);
       const {token, user} = response.data;
-      localStorage.setItem('sc_token', token);
+      localStorage.setItem('sc_token', token); // TODO
       dispatch({
         type: types.SIGN_UP,
         user
