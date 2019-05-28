@@ -14,7 +14,8 @@ class Orders extends Component{
   }
   render(){
     const {orders, ordersError} = this.props;
-    const orderList = orders && orders.map(order => <Order onClick={this.getOrderPage.bind(this, order.id)} {...order} key={order.id} />);
+    console.log(ordersError);
+    const orderList = orders && orders.reverse().map(order => <Order onClick={this.getOrderPage.bind(this, order.id)} {...order} key={order.id} />);
     return(
       <div className="orders">
         {
@@ -29,10 +30,14 @@ class Orders extends Component{
   }
 }
 
+//todo: if you come to this page and auth is false, we need a form for checking a guest order
+
+
 const mapStatetoProps = (state) => {
-  const {orders} = state.orders;
+  const {orders, ordersError} = state.orders;
   return {
-    orders
+    orders,
+    ordersError
   }
 }
 

@@ -39,11 +39,6 @@ export default (state=DEFAULT_STATE, action) => {
         error: null,
       };
     case types.CHECK_OUT_CART:
-      return {
-        id,
-        message,
-        ...DEFAULT_STATE,
-      }
     case types.SIGN_OUT:
       return DEFAULT_STATE;
     default:

@@ -1,0 +1,45 @@
+@import '../../assets/css/colors.scss';
+
+.order{
+  padding: 2%;
+  border-bottom: 1px solid $primaryText;
+  margin: 0 15%;
+  text-align: center;
+  &:nth-child(3n+1){
+    background-color: $scThemeOne;
+  }
+  &:nth-child(3n+2){
+    background-color: $scThemeTwo;
+  }
+  &:nth-child(3n+3){
+    background-color: $scThemeThree;
+  }
+  &:last-child{
+    margin-bottom: 24px;
+  }
+  &:first-child{
+    margin-top: 24px;
+  }
+  div{
+    cursor: pointer;
+  }
+  &:hover{
+    box-shadow: 5px 5px 5px $primaryText;
+    transform: translate(-5px, 5px);
+  }
+  span{
+    display: inline-block;
+    margin-bottom: 0.5em;
+    &.leftSpan{
+      width: 40%;
+      text-align: right;
+      font-weight: bold;
+    }
+    &.rightSpan{
+      width: 60%;
+      text-align: left;
+      text-indent: 0.5em;
+    }
+  }
+  
+}

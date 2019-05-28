@@ -15,6 +15,10 @@ class Cart extends Component{
   componentDidMount(){
     this.props.getCartItems();
   }
+  async checkOutThisCart(){
+    await this.props.checkOutCart();
+    this.props.history.push('/orders');
+  }
   async removeThisItem(pid){
     // delete /api/cart/items/:itemId Delete that item
     await this.props.deleteCartItem(pid);
@@ -54,12 +58,14 @@ class Cart extends Component{
             {
               cartItems
             }
-            <CartFooter checkOutCart={this.props.checkOutCart} total={convertToDollarsandCents(total.cost)} />
+            <CartFooter checkOutCart={this.checkOutThisCart.bind(this)} total={convertToDollarsandCents(total.cost)} />
         </div>
       );
     }
     return(
-      <div>Nothing here yet...</div>
+      <div className="cart">
+        <h2>Nothing here yet...</h2>
+      </div>
     );
   }
 }
