@@ -6,18 +6,26 @@
   vertical-align: middle;
   cursor: pointer;
   position: relative;
-  .menuItem{
+  .menu{
     position: absolute;
     top: 22px;
     background-color: $dotColor;
     color: $scThemeThree;
     text-transform: capitalize;
-    width: 75px;
+    width: 10rem;
     right: 3px;
     font-size: small;
     padding: 5px 10px;
     a {
       color: inherit;
+    }
+    .menuItem{
+      border-bottom: 1px solid;
+      padding: 5px;
+      &:hover{
+        color: $dotColor;
+        background-color: $scThemeThree;
+      }
     }
   }
 }

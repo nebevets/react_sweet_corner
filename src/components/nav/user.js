@@ -32,14 +32,25 @@ class User extends Component{
           <i className="material-icons">account_box</i>
           {
             hover && auth &&
-              <div className="menuItem" onClick={this.handleSignOut.bind(this)}>
-                <Link to="/">sign out</Link>
+              <div className="menu">
+                <div className="menuItem" onClick={this.handleSignOut.bind(this)}>
+                  <Link to="/">Sign Out...</Link>
+                </div>
+                <div className="menuItem">
+                  <Link to="/orders">Orders Status...</Link>
+                </div>
               </div>
+              
           }
           {
             hover && !auth &&
-              <div className="menuItem">
-                <Link to="/sign-in">sign in</Link>
+              <div className="menu">
+                <div className="menuItem">
+                  <Link to="/sign-in">Sign In...</Link>
+                </div>
+                <div className="menuItem">
+                  <Link to="/sign-in">Order Status...</Link>
+                </div>
               </div>
           }
       </li>
