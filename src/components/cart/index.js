@@ -72,7 +72,7 @@ class Cart extends Component{
 
 const mapStateToProps = (state) => {
   const {cart, login} = state;
-  console.log(state);
+  // console.log(state);
   return {
     cart,
     login,
