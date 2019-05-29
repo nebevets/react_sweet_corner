@@ -37,7 +37,7 @@ class User extends Component{
                   <Link to="/">Sign Out...</Link>
                 </div>
                 <div className="menuItem">
-                  <Link to="/orders">Orders Status...</Link>
+                  <Link to="/orders">Order Status...</Link>
                 </div>
               </div>
               

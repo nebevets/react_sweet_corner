@@ -4,6 +4,7 @@ export default {
   GET_PRODUCT_DETAILS: 'get_product_details',
   GET_PRODUCT_DETAILS_ERROR: 'get_product_details_error',
   CLEAR_PRODUCT_DETAILS: 'clear_product_details',
+  CLEAR_HEADER_MESSAGE: 'clear_header_message',
   CHECK_OUT_CART: 'check_out_cart',
   CHECK_OUT_CART_ERROR: 'check_out_cart_error',
   GET_ALL_ORDERS: 'get_all_orders',

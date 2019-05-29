@@ -8,4 +8,19 @@
     font-size: 1.5em;
     margin: 0.75em 0;
   }
+  .networkMessage{
+    position: fixed;
+    top: 0;
+    right: 0;
+    padding: 2em;
+    background-color: $dotColor;
+    border: 2px solid;
+    border-radius: 0.5em;
+    margin: 0.25em;
+    animation: fadeAway 3s infinite;
+  }
+}
+@keyframes fadeAway{
+  from {opacity: 1;}
+  to {opacity: 0;}
 }

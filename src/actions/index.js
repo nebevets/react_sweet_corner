@@ -9,11 +9,12 @@ export const AUTH_TOKEN = 'auth-token';
 export const addCartItem = (pid, quantity=1) => async dispatch => {
   try{
     const response = await axios.post(`${BASE_URL}/api/cart/items/${pid}`, {quantity}, withLocalStorageToken());
-    const {total, cartToken} = response.data;
+    const {total, cartId, cartToken, message} = response.data;
     //cartToken && localStorage.setItem(CART_TOKEN, cartToken); // TODO
     dispatch({
       type: types.ADD_CART_ITEM,
       total,
+      message,
     });
   } catch(err) {
     err.networkError = 'There was an error adding to the cart, from the address:'
@@ -29,11 +30,11 @@ export const addCartItem = (pid, quantity=1) => async dispatch => {
 export const deleteCartItem = (pid) => async dispatch => {
   try{
     const response = await axios.delete(`${BASE_URL}/api/cart/items/${pid}`, withLocalStorageToken());
-    console.dir(response);
-    const {total} = response.data;
+    const {total, message} = response.data;
     dispatch({
       type: types.DELETE_CART_ITEM,
       total,
+      message,
     });
   } catch(err) {
     err.networkError = 'There was an error adding to the cart, from the address:'
@@ -53,10 +54,11 @@ export const deleteCartItem = (pid) => async dispatch => {
 export const putCartItem = (pid, quantity=1) => async dispatch => {
   try{
     const response = await axios.put(`${BASE_URL}/api/cart/items/${pid}`, {quantity}, withLocalStorageToken());
-    const {total} = response.data;
+    const {total, message} = response.data;
     dispatch({
       type: types.PUT_CART_ITEM,
       total,
+      message,
     });
   } catch(err) {
     err.networkError = 'There was an error changing the quantity, from the address:'
@@ -110,10 +112,9 @@ export const getCartTotals = () => async dispatch => {
 export const checkOutCart = () => async dispatch => {
   try{
     const response = await axios.post(`${BASE_URL}/api/orders`, {}, withLocalStorageToken());
-    const {id, message} = response.data;
+    const {message} = response.data;
     dispatch({
       type: types.CHECK_OUT_CART,
-      id,
       message,
     });
   } catch(err) {
@@ -184,6 +185,12 @@ export const clearProductDetails = () => {
   };
 };
 
+export const clearHeaderMessage = () => {
+  return {
+    type: types.CLEAR_HEADER_MESSAGE,
+  };
+};
+
 export const clearErrors = () => ({type: types.CLEAR_ERRORS});
 // parens are need to distiguish between function braces and object braces
 
@@ -203,7 +210,6 @@ export const verifyAuth = () =>
     }
   };
 
-// steveben@msn.com, asDF1234!
 export const signIn = signInData => 
   async dispatch => {
     try {
