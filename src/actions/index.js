@@ -10,7 +10,8 @@ export const addCartItem = (pid, quantity=1) => async dispatch => {
   try{
     const response = await axios.post(`${BASE_URL}/api/cart/items/${pid}`, {quantity}, withLocalStorageToken());
     const {total, cartId, cartToken, message} = response.data;
-    //cartToken && localStorage.setItem(CART_TOKEN, cartToken); // TODO
+    console.log(cartToken, response);
+    cartToken && localStorage.setItem(CART_TOKEN, cartToken); // TODO
     dispatch({
       type: types.ADD_CART_ITEM,
       total,
@@ -84,6 +85,29 @@ export const getCartItems = () => async dispatch => {
     console.log(err);
     // dispatch({
     //   type: types.GET_CART_ITEMS_ERROR,
+    //   productsError: err
+    // });
+  }
+};
+
+export const deleteCart = () => async dispatch => {
+  try{
+    const response = await axios.delete(`${BASE_URL}/api/cart`, withLocalStorageToken());
+    console.log(response);
+    const {deletedId, message} = response.data;
+    if(localStorage.getItem(CART_TOKEN) === deletedId){
+      localStorage.removeItem(CART_TOKEN);
+      console.log(`localstorage cleared for cart token ${deletedId}`);
+    }
+    dispatch({
+      type: types.DELETE_CART,
+      message,
+    });
+  } catch(err) {
+    err.networkError = 'There was an error retrieving the cart from the address:'
+    console.log(err);
+    // dispatch({
+    //   type: types.DELETE_CART_ERROR,
     //   productsError: err
     // });
   }

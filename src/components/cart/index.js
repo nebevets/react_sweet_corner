@@ -1,7 +1,7 @@
 import './cart.scss';
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {getCartItems, deleteCartItem, putCartItem, checkOutCart} from '../../actions';
+import {getCartItems, deleteCartItem, putCartItem, checkOutCart, deleteCart} from '../../actions';
 import {convertToDollarsandCents} from '../../assets/helpers';
 import Quantity from '../quantity';
 import Button from '../button';
@@ -18,6 +18,10 @@ class Cart extends Component{
   async checkOutThisCart(){
     await this.props.checkOutCart();
     this.props.history.push('/orders');
+  }
+  async deleteThisCart(){
+    await this.props.deleteCart();
+    this.props.getCartItems();
   }
   async removeThisItem(pid){
     // delete /api/cart/items/:itemId Delete that item
@@ -53,7 +57,11 @@ class Cart extends Component{
       });
       return(
         <div className="cart">
-          <h2>Cart for {user.name}:</h2>
+          <h2>Cart for {user ? user.name : 'Guest'}: 
+              <Button onClick={this.deleteThisCart.bind(this)} title="Delete All Items...">
+                <span>Delete </span>
+                <span className="material-icons">remove_shopping_cart</span>
+              </Button></h2>
             <CartHeader/>
             {
               cartItems
@@ -83,5 +91,6 @@ export default connect(mapStateToProps, {
   deleteCartItem,
   getCartItems,
   putCartItem,
-  checkOutCart
+  checkOutCart,
+  deleteCart,
 })(Cart);

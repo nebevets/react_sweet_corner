@@ -10,17 +10,25 @@
   }
   .networkMessage{
     position: fixed;
-    top: 0;
-    right: 0;
-    padding: 2em;
+    top: 2em;
+    right: 2em;
+    padding: 1em;
     background-color: $dotColor;
     border: 2px solid;
     border-radius: 0.5em;
-    margin: 0.25em;
-    animation: fadeAway 3s infinite;
+    animation: fadeAway 2.1s infinite;
   }
 }
 @keyframes fadeAway{
-  from {opacity: 1;}
-  to {opacity: 0;}
+  0% {opacity: 1;}
+  10% {opacity: 0.99;}
+  20% {opacity: 0.98;}
+  30% {opacity: 0.97;}
+  40% {opacity: 0.95;}
+  50% {opacity: 0.92;}
+  60% {opacity: 0.87;}
+  70% {opacity: 0.79;}
+  80% {opacity: 0.66;}
+  90% {opacity: 0.45;}
+  100% {opacity: 0.11;}
 }

@@ -11,7 +11,6 @@ class Header extends Component{
     super(props);
   }
   componentDidUpdate(prevProps){
-    console.log('cdu header: ', prevProps, this.props)
     if(!prevProps.message && this.props.message){
       this.timeOut = setTimeout(this.props.clearHeaderMessage, 2000);
     }

@@ -16,6 +16,8 @@ export default {
   GET_CART_TOTALS: 'get_cart_totals',
   GET_CART_ITEMS: 'get_cart_items',
   GET_CART_ITEMS_ERROR: 'get_cart_items_error',
+  DELETE_CART: 'delete_cart',
+  DELETE_CART_ERROR: 'delete_cart_error',
   DELETE_CART_ITEM: 'delete_cart_item',
   DELETE_CART_ITEM_ERROR: 'delete_cart_item_error',
   CLEAR_ERRORS: 'clear_errors',
