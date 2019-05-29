@@ -10,6 +10,7 @@ export const addCartItem = (pid, quantity=1) => async dispatch => {
   try{
     const response = await axios.post(`${BASE_URL}/api/cart/items/${pid}`, {quantity}, withLocalStorageToken());
     const {total, cartId, cartToken, message} = response.data;
+    console.log(cartToken, response);
     cartToken && localStorage.setItem(CART_TOKEN, cartToken); // TODO
     dispatch({
       type: types.ADD_CART_ITEM,

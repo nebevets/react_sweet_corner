@@ -57,7 +57,7 @@ class Cart extends Component{
       });
       return(
         <div className="cart">
-          <h2>Cart for {user.name}: 
+          <h2>Cart for {user ? user.name : 'Guest'}: 
               <Button onClick={this.deleteThisCart.bind(this)} title="Delete All Items...">
                 <span>Delete </span>
                 <span className="material-icons">remove_shopping_cart</span>
