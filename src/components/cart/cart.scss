@@ -5,6 +5,14 @@
   h2{
     margin: 0 0 1em;
     border-bottom: 1px solid;
+    position: relative;
+    .sweetButton{
+      position: absolute;
+      font-size: initial;
+      bottom: 0;
+      right: 0;
+      font-weight: normal;
+    }
   }
   .cartItem{
     padding: 0.5em 1em;

@@ -1,10 +1,10 @@
 import React from 'react';
 import {convertToDollarsandCents} from '../../assets/helpers';
 
-export default ({createdAt, id, itemCount, status, total}) => {
+export default ({createdAt, id, itemCount, status, total, onClick}) => {
   const orderDate = new Date(createdAt).toLocaleDateString();
   return(
-    <div className="order" title="Click for Details...">
+    <div className="order" title="Click for Details..." onClick={onClick}>
       <div className="id">
         <span className="leftSpan">Order ID:</span>
         <span className="rightSpan">{id}</span>

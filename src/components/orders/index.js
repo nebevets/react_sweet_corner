@@ -32,7 +32,6 @@ class Orders extends Component{
 
 //todo: if you come to this page and auth is false, we need a form for checking a guest order
 
-
 const mapStatetoProps = (state) => {
   const {orders, ordersError} = state.orders;
   return {
