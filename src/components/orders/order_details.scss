@@ -1,0 +1,29 @@
+@import '../../assets/css/colors.scss';
+@import '../../assets/css/fonts.scss';
+
+.orderDetail{
+  .status {
+    text-align: center;
+    font-size: x-large;
+    margin-top: 2%;
+    .orderId{
+      font-size: large;
+      border-bottom: 1px solid;
+    }
+  }
+  .totals{
+    padding: 1em;
+    background-color: $dotColor;
+    font-weight: bold;
+  }
+  .orderItems{
+    text-align: center;
+    font-family: $fancy;
+    font-size: x-large;
+    .item{
+      width: 25%;
+      display: inline-block;
+      padding: 0.25em;
+    }
+  }
+}

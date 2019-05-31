@@ -9,6 +9,8 @@ export default {
   CHECK_OUT_CART_ERROR: 'check_out_cart_error',
   GET_ALL_ORDERS: 'get_all_orders',
   GET_ALL_ORDERS_ERROR: 'get_all_orders_error',
+  GET_ORDER_DETAILS: 'get_order_details',
+  GET_ORDER_DETAILS_ERROR: 'get_order_details_error',
   ADD_CART_ITEM: 'add_cart_item',
   ADD_CART_ITEM_ERROR: 'add_cart_item',
   PUT_CART_ITEM: 'add_cart_item',
