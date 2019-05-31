@@ -6,9 +6,9 @@ const DEFAULT_STATE = {
 };
 
 export default (state=DEFAULT_STATE, action) => {
-  // console.log(state);
+  console.log(state);
   const {type, items, total, message, error} = action;
-  // console.log('cart action: ', action);
+  console.log('cart action: ', action);
   switch(type){
     case types.CLEAR_HEADER_MESSAGE:
       return{

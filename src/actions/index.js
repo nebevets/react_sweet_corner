@@ -3,15 +3,14 @@ import axios from 'axios';
 import {withLocalStorageToken} from '../assets/helpers';
 
 const BASE_URL = "http://api.sc.lfzprototypes.com";
-export const CART_TOKEN = 'cart-token';
+export const CART_TOKEN = 'x-cart-token';
 export const AUTH_TOKEN = 'auth-token';
 
 export const addCartItem = (pid, quantity=1) => async dispatch => {
   try{
     const response = await axios.post(`${BASE_URL}/api/cart/items/${pid}`, {quantity}, withLocalStorageToken());
-    const {total, cartId, cartToken, message} = response.data;
-    console.log(cartToken, response);
-    cartToken && localStorage.setItem(CART_TOKEN, cartToken); // TODO
+    const {total, cartToken, message} = response.data;
+    cartToken && localStorage.setItem(CART_TOKEN, cartToken);
     dispatch({
       type: types.ADD_CART_ITEM,
       total,
@@ -257,7 +256,10 @@ export const signIn = signInData =>
       const response = await axios.post('http://api.sc.lfzprototypes.com/auth/sign-in', signInData, withLocalStorageToken());
       console.log('sign in response' , response);
       const {token, user} = response.data;
-      localStorage.setItem(AUTH_TOKEN, token);
+      token && localStorage.setItem(AUTH_TOKEN, token);
+      if(localStorage.getItem(CART_TOKEN)){
+        localStorage.removeItem(CART_TOKEN);
+      }
       dispatch({
         type: types.SIGN_IN,
         user
