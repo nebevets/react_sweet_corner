@@ -154,7 +154,7 @@ export const checkOutCart = () => async dispatch => {
 export const getAllOrders = () => async dispatch => {
   try{
     const response = await axios.get(`${BASE_URL}/api/orders`, withLocalStorageToken());
-    console.log(response);
+    // console.log(response);
     const {orders} = response.data;
     dispatch({
       type: types.GET_ALL_ORDERS,
@@ -166,6 +166,23 @@ export const getAllOrders = () => async dispatch => {
     //   type: types.GET_ALL_ORDERS_ERROR,
     //   ordersError: err
     // });
+  }
+};
+//GET /api/orders/:orderId
+export const getOrderDetails = orderId => async dispatch => {
+  try{
+    const response = await axios.get(`${BASE_URL}/api/orders/${orderId}`, withLocalStorageToken());
+    const {data} = response;
+    dispatch({
+      type: types.GET_ORDER_DETAILS,
+      data
+    });
+  } catch(err) {
+    err.networkError = 'There was an error retrieving orders details from the address:'
+    dispatch({
+      type: types.GET_ORDER_DETAILS_ERROR,
+      orderDetailsError: err
+    });
   }
 };
 

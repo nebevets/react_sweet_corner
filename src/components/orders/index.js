@@ -10,11 +10,10 @@ class Orders extends Component{
     this.props.getAllOrders()
   }
   getOrderPage(oid){
-    console.log(oid);
+    this.props.history.push(`/orders/${oid}`);
   }
   render(){
     const {orders, ordersError} = this.props;
-    console.log(ordersError);
     const orderList = orders && orders.reverse().map(order => <Order onClick={this.getOrderPage.bind(this, order.id)} {...order} key={order.id} />);
     return(
       <div className="orders">

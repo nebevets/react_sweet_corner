@@ -11,6 +11,7 @@ import Contact from './contact';
 import Cart from './cart';
 import Account from './account';
 import Orders from './orders';
+import OrderDetails from './orders/order_details';
 import SignIn from './sign-in';
 import SignUp from './sign-up';
 import Footer from './footer';
@@ -29,7 +30,8 @@ const App = () => (
             <Route path="/sign-in" component={SignIn} />
             <Route path="/sign-up" component={SignUp} />
             <Route path="/account" component={Account} />
-            <Route path="/orders" component={Orders} />
+            <Route exact path="/orders" component={Orders} />
+            <Route path="/orders/:order_id" component={OrderDetails} />
             <Footer/>
         </div>
     </div>
