@@ -92,12 +92,8 @@ export const getCartItems = () => async dispatch => {
 export const deleteCart = () => async dispatch => {
   try{
     const response = await axios.delete(`${BASE_URL}/api/cart`, withLocalStorageToken());
-    console.log(response);
-    const {deletedId, message} = response.data;
-    if(localStorage.getItem(CART_TOKEN) === deletedId){
-      localStorage.removeItem(CART_TOKEN);
-      console.log(`localstorage cleared for cart token ${deletedId}`);
-    }
+    const {message} = response.data;
+    localStorage.removeItem(CART_TOKEN);
     dispatch({
       type: types.DELETE_CART,
       message,
