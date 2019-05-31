@@ -14,5 +14,8 @@
   span{
     cursor: pointer;
     vertical-align: middle;
+    &.material-icons{
+      font-size: large;
+    }
   }
 }
