@@ -16,8 +16,11 @@ class Cart extends Component{
     this.props.getCartItems();
   }
   async checkOutThisCart(){
-    await this.props.checkOutCart();
-    this.props.history.push('/orders');
+    const {auth} = this.props.login;
+    if(auth){
+      await this.props.checkOutCart();
+      this.props.history.push('/orders');
+    }
   }
   async deleteThisCart(){
     await this.props.deleteCart();
