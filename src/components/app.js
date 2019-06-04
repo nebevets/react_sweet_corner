@@ -15,6 +15,7 @@ import OrderDetails from './orders/order_details';
 import SignIn from './sign-in';
 import SignUp from './sign-up';
 import GuestCheckOut from './guest-check-out';
+import ThankYou from './thank-you';
 import Footer from './footer';
 
 const App = () => (
@@ -34,6 +35,7 @@ const App = () => (
             <Route exact path="/orders" component={Orders} />
             <Route path="/orders/:order_id" component={OrderDetails} />
             <Route path="/guest-check-out" component={GuestCheckOut} />
+            <Route path="/thanks/:order_id" component={ThankYou} />
             <Footer/>
         </div>
     </div>

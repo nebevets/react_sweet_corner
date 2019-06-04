@@ -20,6 +20,7 @@ class Cart extends Component{
     if(auth){
       await this.props.checkOutCart();
       this.props.history.push('/orders');
+      return;
     }
     this.props.history.push('/guest-check-out');
   }
