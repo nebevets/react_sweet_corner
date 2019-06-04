@@ -39,11 +39,5 @@
     div:nth-child(3n+3) input, button{
       background-color: $scThemeThree
     }
-    p.error {
-      position: absolute;
-      font-size: 12px;
-      color: $error;
-      transform: translate(40px, 23px);
-    }
   }
 }

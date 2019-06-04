@@ -1,0 +1,23 @@
+@import '../../assets/css/colors.scss';
+
+.guestCheckOut{
+  width: 50%;
+  margin: auto;
+  h3{
+    text-align: center;
+  }
+  input{
+    background-color: $dotColor;
+    color: $primaryText;
+    border: none;
+    padding: 0 0 0 10px;
+    font-size: 1em;
+    height: 35px;
+    width: 310px;
+    margin-bottom: 1em;
+  }
+  .checkOut{
+    text-align: right;
+    margin: 1em 0;
+  }
+}

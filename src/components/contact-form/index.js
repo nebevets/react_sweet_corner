@@ -1,7 +1,7 @@
 import './form.scss';
 import React, {Component} from 'react';
 import {Field, reduxForm} from 'redux-form';
-import Input from '../contact-form/input'
+import Input from '../input';
 import TextArea from '../contact-form/textarea';
 
 class ContactForm extends Component{

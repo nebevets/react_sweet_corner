@@ -1,0 +1,10 @@
+@import '../../assets/css/colors.scss';
+
+.sweetInput{
+  p.error {
+    position: absolute;
+    font-size: small;
+    color: $error;
+    transform: translate(40px, 23px);
+  }
+}

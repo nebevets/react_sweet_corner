@@ -1,11 +1,11 @@
 import './button.scss';
 import React from 'react';
 
-const Button = ({children, onClick, title}) => {
+const Button = ({children, onClick, title, type='button'}) => {
   return(
-    <span className="sweetButton" onClick={onClick} title={title}>
+    <button className="sweetButton" onClick={onClick} title={title} type={type}>
       {children}
-    </span>
+    </button>
   );
 };
 

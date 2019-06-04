@@ -7,6 +7,8 @@ export default {
   CLEAR_HEADER_MESSAGE: 'clear_header_message',
   CHECK_OUT_CART: 'check_out_cart',
   CHECK_OUT_CART_ERROR: 'check_out_cart_error',
+  CHECK_OUT_GUEST_CART: 'check_out_guest_cart',
+  CHECK_OUT_GUEST_CART_ERROR: 'check_out_guest_cart_error',
   GET_ALL_ORDERS: 'get_all_orders',
   GET_ALL_ORDERS_ERROR: 'get_all_orders_error',
   GET_ORDER_DETAILS: 'get_order_details',
