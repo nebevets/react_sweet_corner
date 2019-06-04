@@ -1,12 +1,14 @@
+import './input.scss';
 import React from 'react';
 
-export default props => {
-  const {input, label, meta: {error, touched}, type="text", className} = props;
+const Input = (props) => {
+  const {input, type="text", placeholder, autoComplete=input.name, meta} = props;
   return(
-    <div className={`input-field ${className}`}>
-      <input {...input} type={type} id={input.name}/>
-      <label htmlFor={input.name}>{label}</label>
-      <p className="">{touched && error}</p>
+    <div className='sweetInput'>
+      <p className="error">{meta.touched && meta.error}</p>
+      <input {...input} type={type} placeholder={placeholder} autoComplete={autoComplete}/>
     </div>
   );
 }
+
+export default Input;

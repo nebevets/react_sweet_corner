@@ -152,20 +152,22 @@ export const checkOutCart = () => async dispatch => {
 // post data required, example: { email: 'mail@mail.com', firstName: 'Jane', lastName: 'Doe' }
 export const checkOutGuestCart = formData => async dispatch => {
   try{
-    // const response = await axios.post(`${BASE_URL}/api/orders/guest`, {...formData}, withLocalStorageToken());
-    console.log(formData);
-    const {message} = "it works";
+    const response = await axios.post(`${BASE_URL}/api/orders/guest`, {...formData}, withLocalStorageToken());
+    console.log(response);
+    const {message, id} = response.data;
+    localStorage.removeItem(CART_TOKEN);
     dispatch({
       type: types.CHECK_OUT_GUEST_CART,
       message,
+      id,
     });
   } catch(err) {
     err.networkError = 'There was an error checking out this cart, from the address:'
     console.log(err);
-    // dispatch({
-    //   type: types.CHECK_OUT_GUEST_CART_ERROR,
-    //   cartError: err
-    // });
+    dispatch({
+      type: types.CHECK_OUT_GUEST_CART_ERROR,
+      cartError: err
+    });
   }
 };
 

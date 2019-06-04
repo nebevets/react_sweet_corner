@@ -1,6 +1,9 @@
 @import '../../assets/css/colors.scss';
 
 .sweetButton{
+  background-color: transparent;
+  color: inherit;
+  font-size: inherit;
   user-select: none;
   border: 2px solid transparent;
   padding: 7px 5px;

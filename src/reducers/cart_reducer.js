@@ -47,6 +47,7 @@ export default (state=DEFAULT_STATE, action) => {
       };
     case types.DELETE_CART:
     case types.CHECK_OUT_CART:
+    case types.CHECK_OUT_GUEST_CART:
       return {
         ...DEFAULT_STATE,
         message

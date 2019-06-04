@@ -21,6 +21,7 @@ class Cart extends Component{
       await this.props.checkOutCart();
       this.props.history.push('/orders');
     }
+    this.props.history.push('/guest-check-out');
   }
   async deleteThisCart(){
     await this.props.deleteCart();

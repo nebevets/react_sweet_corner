@@ -1,87 +1,60 @@
+import './guest-check-out.scss';
 import React, {Component} from 'react';
 import {Field, reduxForm} from 'redux-form';
 import {connect} from 'react-redux';
 import {clearErrors, checkOutGuestCart} from '../../actions';
 import Input from '../input';
-
-// ### Guest Order APIs
-// Checkout - Create an Order from cart contents as a guest
-// POST /api/orders/guest
-// headers required: 'X-Cart-Token': 'cart token'
-// post data required, example: { email: 'mail@mail.com', firstName: 'Jane', lastName: 'Doe' }
-
-// View Guest Order Details
-// POST /api/orders/:orderId
-// post data required, example: { email: 'mail@mail.com' }
-// The email sent must be the same one the order was made with
+import Button from '../button';
 
 class GuestCheckOut extends Component{
-  handleSignUp(values){
-    this.props.signUp(values);
+  handleGuestCheckout(values){
+    this.props.checkOutGuestCart(values);
   }
   componentWillUnmount(){
     this.props.clearErrors();
   }
-  renderError(error){
-    return(
-      <p className="red-text" key={error}>{error}</p>
-    );
-  }
   render(){
     const {handleSubmit} = this.props;
-    let {authError} = this.props;
-    if(Array.isArray(authError)){
-      authError = authError.map(this.renderError);
-    }else{
-      authError = this.renderError(authError);
-    }
     return(
-      <form onSubmit={handleSubmit(this.handleSignUp.bind(this))}>
-        <div className="row">
-          <Field name="firstName" label="Given Name" className="col s12 m6" component={Input}/>
-          <Field name="lastName" label="Sur Name" className="col s12 m6" component={Input}/>
-        </div>
-        <div className="row">
-          <Field name="email" label="Email" className="col s12" component={Input}/>
-        </div>
-        <div className="row right-align">
-          <Button>
-            <span>
-              Check Out 
-            </span>
-            <span className="material-icons">
-              shopping-cart
-            </span>
-          </Button>
-          {authError}
-        </div>
+      <form className="guestCheckOut" onSubmit={handleSubmit(this.handleGuestCheckout.bind(this))}>
+        <h3>Welcome to Guest Checkout</h3>
+          <Field name="firstName" placeholder="Given Name" className="firstName" component={Input}/>
+          <Field name="lastName" placeholder="Surname" className="lastName" component={Input}/>
+          <Field name="email" placeholder="Email" className="email" component={Input}/>
+          <div className="checkOut">
+            <Button type="submit" onClick={handleSubmit(this.handleGuestCheckout.bind(this))} title="Check out...">
+              <span>Check Out </span>
+              <span className="material-icons">shopping_cart</span>
+            </Button>
+          </div>
       </form>
     );
   }
 }
 
-function validate({firstName, lastName, email}){
+const validate = (formValues) => {
   const errors = {};
-  if(!firstName){
-    errors.firstName = 'please enter your given name';
+  const regExpTests = {
+    firstName: /^[a-z ,.'-]+$/i,
+    lastName: /^[a-z ,.'-]+$/i,
+    email: /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
   }
-  if(!lastName){
-    errors.lastName = 'please enter your sur name';
+  const errorMessages = {
+    firstName: 'Please enter your given (first) name.',
+    lastName: 'Please enter your surname.',
+    email: 'That is not a valid email address.',
   }
-  if(!email){
-    errors.email = 'please enter your email name';
-  }
-  return errors;
+  Object
+    .keys(errorMessages)
+    .map((key) => {
+      if(!formValues[key] || !regExpTests[key].test(formValues[key])){
+        errors[key] = errorMessages[key];
+      }
+    })
+    return errors;
 }
 
-const mapStateToProps = (state) => {
-  const {cart} = state;
-  return {
-    cart
-  };
-}
-
-GuestCheckOut = connect(mapStateToProps, {
+GuestCheckOut = connect(null, {
   clearErrors, checkOutGuestCart
 })(GuestCheckOut);
 
