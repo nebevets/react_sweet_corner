@@ -45,6 +45,7 @@ class OrderDetails extends Component{
 }
 
 const mapStateToProps = (state) => {
+  console.log('***** Order detail: ', state);
   const {orderDetail, orderDetailsError} = state.orders;
   return {
     orderDetail,

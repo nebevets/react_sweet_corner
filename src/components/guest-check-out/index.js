@@ -7,8 +7,13 @@ import Input from '../input';
 import Button from '../button';
 
 class GuestCheckOut extends Component{
-  handleGuestCheckout(values){
-    this.props.checkOutGuestCart(values);
+  async handleGuestCheckout(values){
+    await this.props.checkOutGuestCart(values);
+    this.handleThankYou.call(this);
+  }
+  handleThankYou(){
+    const {id} = this.props;
+    this.props.history.push(`/thanks/${id}`);
   }
   componentWillUnmount(){
     this.props.clearErrors();
@@ -18,15 +23,16 @@ class GuestCheckOut extends Component{
     return(
       <form className="guestCheckOut" onSubmit={handleSubmit(this.handleGuestCheckout.bind(this))}>
         <h3>Welcome to Guest Checkout</h3>
-          <Field name="firstName" placeholder="Given Name" className="firstName" component={Input}/>
-          <Field name="lastName" placeholder="Surname" className="lastName" component={Input}/>
-          <Field name="email" placeholder="Email" className="email" component={Input}/>
-          <div className="checkOut">
-            <Button type="submit" onClick={handleSubmit(this.handleGuestCheckout.bind(this))} title="Check out...">
-              <span>Check Out </span>
-              <span className="material-icons">shopping_cart</span>
-            </Button>
-          </div>
+        <p>Fill out the form below and click check out.</p>
+        <Field name="firstName" placeholder="Given Name" className="firstName" component={Input}/>
+        <Field name="lastName" placeholder="Surname" className="lastName" component={Input}/>
+        <Field name="email" placeholder="Email" className="email" component={Input}/>
+        <div className="checkOut">
+          <Button type="submit" onClick={handleSubmit(this.handleGuestCheckout.bind(this))} title="Check out...">
+            <span>Check Out </span>
+            <span className="material-icons">shopping_cart</span>
+          </Button>
+        </div>
       </form>
     );
   }
@@ -54,7 +60,14 @@ const validate = (formValues) => {
     return errors;
 }
 
-GuestCheckOut = connect(null, {
+const mapStatetoProps = (state) => {
+  const {id} = state.cart;
+  return {
+    id,
+  }
+};
+
+GuestCheckOut = connect(mapStatetoProps, {
   clearErrors, checkOutGuestCart
 })(GuestCheckOut);
 
