@@ -1,9 +1,12 @@
 @import '../../assets/css/colors.scss';
 
 .guestCheckOut{
-  width: 35%;
+  background-image: url('../../assets/images/down-dots.png');
+  width: 50%;
   margin: auto;
-  h3{
+  background-position: center right;
+  background-repeat: no-repeat;
+  h3, p{
     text-align: center;
   }
   input{
