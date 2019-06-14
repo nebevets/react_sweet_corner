@@ -13,7 +13,7 @@ class Quantity extends Component{
     if (prevProps.quantity !== this.props.quantity){
       this.setState({
         quantity: this.props.quantity
-      })
+      });
     }
   }
   handleQuantity(event){
