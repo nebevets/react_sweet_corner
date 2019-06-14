@@ -6,8 +6,15 @@ class Quantity extends Component{
   constructor(props){
     super(props);
     this.state = {
-      [props.pid]: props.quantity 
+      quantity: props.quantity 
     };
+  }
+  componentDidUpdate(prevProps){
+    if (prevProps.quantity !== this.props.quantity){
+      this.setState({
+        quantity: this.props.quantity
+      })
+    }
   }
   handleQuantity(event){
     const {name, value} = event.target;
@@ -21,10 +28,11 @@ class Quantity extends Component{
   }
   render(){
     const {updateQuantity, pid} = this.props;
+    const {quantity} = this.state;
     return(
       <div className="quantityChanger">
-        <input name={pid} type="number" value={this.state[pid]} onChange={this.handleQuantity.bind(this)} />
-        <Button onClick={() => updateQuantity(pid, this.state[pid])} title="Update this quantity...">
+        <input name="quantity" type="number" value={quantity} onChange={this.handleQuantity.bind(this)} />
+        <Button onClick={() => updateQuantity(pid, quantity)} title="Update this quantity...">
           <span>Update </span>
           <span className="material-icons">shopping_cart</span>
         </Button>
