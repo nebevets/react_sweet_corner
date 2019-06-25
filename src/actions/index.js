@@ -226,10 +226,10 @@ export const getAllProducts = () => async dispatch => {
 export const getProductDetails = productId => async dispatch => {
   try{
     const response = await axios.get(`${BASE_URL}/api/products/${productId}`);
-    const {product} = response.data;
+    const {data} = response;
     dispatch({
       type: types.GET_PRODUCT_DETAILS,
-      product
+      product: data
     });
   } catch(err) {
     err.networkError = 'There was an error retrieving product details from the address:'
