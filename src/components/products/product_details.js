@@ -50,7 +50,7 @@ class ProductDetails extends Component{
               </div>
               <div className="addToCart">
                 <input name="quantity" type="number" value={quantity} onChange={this.handleQuantity.bind(this)}/>
-                <Button onClick={this.handleAddCartItem.bind(this, details.pid, quantity)} title="Add to cart...">
+                <Button onClick={this.handleAddCartItem.bind(this, details.id, quantity)} title="Add to cart...">
                   <span>Add to </span>
                   <span className="material-icons">add_shopping_cart</span>
                 </Button>

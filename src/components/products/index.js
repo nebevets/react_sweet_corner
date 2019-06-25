@@ -15,7 +15,7 @@ class Products extends Component{
   }
   render(){
     const {data, productsError} = this.props.products;
-    const cakes = data && data.map(product => <CupCake onClick={this.getProductPage.bind(this, product.pid)} {...product} key={product.pid} />);
+    const cakes = data && data.map(product => <CupCake onClick={this.getProductPage.bind(this, product.id)} {...product} key={product.id} />);
     return(
       <div className="products">
         {

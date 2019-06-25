@@ -16,6 +16,7 @@ class OrderDetails extends Component{
       <span className='item' key={item.id}>
         <div>{item.product.name}</div>
         <img src={item.product.thumbnail.url} alt={item.product.thumbnail.altText}/>
+        <div>{item.quantity} at {convertToDollarsandCents(item.each)} ea.</div>
       </span>
     );
     return(
