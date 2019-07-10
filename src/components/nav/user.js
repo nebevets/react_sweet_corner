@@ -49,6 +49,9 @@ class User extends Component{
                   <Link to="/sign-in">Sign In...</Link>
                 </div>
                 <div className="menuItem">
+                  <Link to="/sign-up">Sign Up...</Link>
+                </div>
+                <div className="menuItem">
                   <Link to="/sign-in">Order Status...</Link>
                 </div>
               </div>

@@ -1,75 +1,102 @@
+import './sign-up.scss';
 import React, {Component} from 'react';
 import {Field, reduxForm} from 'redux-form';
 import {connect} from 'react-redux';
 import {signUp, clearErrors} from '../../actions';
 import Input from '../input';
+import Button from '../button';
 
 class SignUp extends Component{
-  handleSignUp(values){
-    this.props.signUp(values);
+  async handleSignUp(values){
+    try{
+      await this.props.signUp(values);
+      const {auth} = this.props;
+      if(auth){
+        this.props.history.push('/cart');
+      } else {
+        throw new Error();
+      }
+    }
+    catch(error){
+      return;
+    }
+  }
+  checkSignUpSuccess(){
+    const {auth} = this.props;
+    console.log(auth);
   }
   componentWillUnmount(){
     this.props.clearErrors();
   }
   renderError(error){
     return(
-      <p className="red-text" key={error}>{error}</p>
+      <p className="error" key={error}>{error}</p>
     );
   }
   render(){
     const {handleSubmit} = this.props;
-    let {authError} = this.props;
-    if(Array.isArray(authError)){
-      authError = authError.map(this.renderError);
+    let {signUpError} = this.props;
+    if(Array.isArray(signUpError)){
+      signUpError = signUpError.map(this.renderError);
     }else{
-      authError = this.renderError(authError);
+      signUpError = this.renderError(signUpError);
     }
     return(
-      <form onSubmit={handleSubmit(this.handleSignUp.bind(this))}>
-        <div className="row">
-          <Field name="firstName" label="Given Name" className="col s12 m6" component={Input}/>
-          <Field name="lastName" label="Sur Name" className="col s12 m6" component={Input}/>
-        </div>
-        <div className="row">
-          <Field name="email" label="Email" className="col s12" component={Input}/>
-        </div>
-        <div className="row">
-          <Field name="password" label="Create Password" className="col s12 m6" component={Input} type="password"/>
-          <Field name="confirmPassword" label="Confirm Password" className="col s12 m6" component={Input} type="password"/>
-        </div>
-        <div className="row right-align">
-          <button className="btn">Sign Up</button>
-          {authError}
-        </div>
-      </form>
+      <div className="signUp">
+        <h3>Sign up for sweetness...</h3>
+        <p>Complete the information below and receive your personal Sweet Corner shopping account. Creating an account puts you in our rewards program where you receive special announcements, discounts, order history and more.</p>
+        <form onSubmit={handleSubmit(this.handleSignUp.bind(this))}>
+          <Field name="firstName" placeholder="First Name" component={Input}/>
+          <Field name="lastName" placeholder="Last Name" component={Input}/>
+          <Field name="email" placeholder="Email" component={Input}/>
+          <Field name="password" placeholder="Create Password" component={Input} type="password"/>
+          <Field name="confirmPassword" placeholder="Confirm Password" component={Input} type="password"/>
+          <div className="buttonArea">
+            <Button type="submit" title="Sign Up...">
+              <span>Sign Up </span>
+              <span className="material-icons">person_add</span>
+            </Button>
+            {signUpError}
+          </div>
+        </form>
+      </div> 
     );
   }
 }
 
-function validate({firstName, lastName, email, password, confirmPassword}){
+const validate = (formValues) => {
   const errors = {};
-  if(!firstName){
-    errors.firstName = 'please enter your given name';
+  const regExpTests = {
+    firstName: /^[a-z ,.'-]+$/i,
+    lastName: /^[a-z ,.'-]+$/i,
+    email: /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+    password: /^(?=.{8,}$)(?=.+[0-9])(?=.+[!@#\$%\^&])/
   }
-  if(!lastName){
-    errors.lastName = 'please enter your sur name';
+  const errorMessages = {
+    firstName: 'Please enter a first name.',
+    lastName: 'Please enter a last name.',
+    email: 'That is not a valid email address.',
+    password: 'Pick at least 8 characters from: A-Z, a-z, 0-9, and !@#$%^&',
   }
-  if(!email){
-    errors.email = 'please enter your email name';
-  }
-  if(!password){
-    errors.password = 'please enter your password';
-  }
-  if(password !== confirmPassword){
-    errors.confirmPassword = 'passwords do not match';
+  Object
+    .keys(errorMessages)
+    .map((key) => {
+      if(!formValues[key] || !regExpTests[key].test(formValues[key])){
+        errors[key] = errorMessages[key];
+      }
+    })
+  if(formValues.confirmPassword !== formValues.password){
+    errors.confirmPassword = 'Passwords do not match.';
   }
   return errors;
 }
 
 const mapStateToProps = (state) => {
-  const {signUpError} = state.user;
+  console.log('state from signIn: ', state);
+  const {signUpError, auth} = state.login;
   return {
-    authError: signUpError //because redux form already has an error key that will overwrite
+    auth,
+    signUpError
   };
 }
 

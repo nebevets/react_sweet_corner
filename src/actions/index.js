@@ -18,7 +18,6 @@ export const addCartItem = (pid, quantity=1) => async dispatch => {
     });
   } catch(err) {
     err.networkError = 'There was an error adding to the cart, from the address:'
-    console.log(err);
     dispatch({
       type: types.ADD_CART_ITEM_ERROR,
       cartError: err
@@ -62,7 +61,6 @@ export const putCartItem = (pid, quantity=1) => async dispatch => {
     });
   } catch(err) {
     err.networkError = 'There was an error changing the quantity, from the address:'
-    console.log(err);
     dispatch({
       type: types.PUT_CART_ITEM_ERROR,
       cartError: err
@@ -153,7 +151,6 @@ export const checkOutCart = () => async dispatch => {
 export const checkOutGuestCart = formData => async dispatch => {
   try{
     const response = await axios.post(`${BASE_URL}/api/orders/guest`, {...formData}, withLocalStorageToken());
-    console.log(response);
     const {message, id} = response.data;
     localStorage.removeItem(CART_TOKEN);
     dispatch({
@@ -163,7 +160,6 @@ export const checkOutGuestCart = formData => async dispatch => {
     });
   } catch(err) {
     err.networkError = 'There was an error checking out this cart, from the address:'
-    console.log(err);
     dispatch({
       type: types.CHECK_OUT_GUEST_CART_ERROR,
       cartError: err
@@ -174,7 +170,6 @@ export const checkOutGuestCart = formData => async dispatch => {
 export const getAllOrders = () => async dispatch => {
   try{
     const response = await axios.get(`${BASE_URL}/api/orders`, withLocalStorageToken());
-    // console.log(response);
     const {orders} = response.data;
     dispatch({
       type: types.GET_ALL_ORDERS,
@@ -275,7 +270,6 @@ export const signIn = signInData =>
   async dispatch => {
     try {
       const response = await axios.post('http://api.sc.lfzprototypes.com/auth/sign-in', signInData, withLocalStorageToken());
-      console.log('sign in response' , response);
       const {token, user} = response.data;
       token && localStorage.setItem(AUTH_TOKEN, token);
       if(localStorage.getItem(CART_TOKEN)){
@@ -286,7 +280,6 @@ export const signIn = signInData =>
         user
       });
     } catch(err) {
-      console.log(err);
       dispatch({
         type: types.SIGN_IN_ERROR,
         error: 'Invalid email or password'
@@ -304,15 +297,16 @@ export const signOut = () => {
 export const signUp = signUpData => 
   async (dispatch) => {
     try {
-      const response = await axios.post('http://api.sc.lfzprototypes.com/auth/create-account', signUpData);
+      const response = await axios.post('http://api.sc.lfzprototypes.com/auth/create-account', signUpData, withLocalStorageToken());
+      console.log(response);
       const {token, user} = response.data;
-      localStorage.setItem('sc_token', token); // TODO
+      localStorage.setItem(AUTH_TOKEN, token);
+      localStorage.removeItem(CART_TOKEN);
       dispatch({
         type: types.SIGN_UP,
         user
       });
     } catch(err) {
-      console.log(err.response);
       let errorMessage = 'Error creating account';
       if(err.response.status === 422){
         errorMessage = err.response.data.errors || errorMessage;
