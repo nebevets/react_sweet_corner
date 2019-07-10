@@ -1,0 +1,26 @@
+@import '../../assets/css/colors.scss';
+
+.signUp{
+  background-image: url('../../assets/images/down-dots.png');
+  width: 50%;
+  margin: auto;
+  background-position: center right;
+  background-repeat: no-repeat;
+  > p {
+    text-align: justify;
+    font-size: small;
+  }
+  input{
+    background-color: $dotColor;
+    color: $primaryText;
+    border: none;
+    padding: 0 0 0 10px;
+    font-size: 1em;
+    height: 35px;
+    width: 310px;
+    margin-bottom: 1em;
+  }
+  .buttonArea{
+    text-align: right;
+  }
+}
