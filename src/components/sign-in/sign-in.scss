@@ -1,0 +1,22 @@
+@import '../../assets/css/colors.scss';
+
+.signIn{
+  background-image: url('../../assets/images/dots-footer.png');
+  width: 50%;
+  margin: auto;
+  background-position: center right;
+  background-repeat: no-repeat;
+  input{
+    background-color: $dotColor;
+    color: $primaryText;
+    border: none;
+    padding: 0 0 0 10px;
+    font-size: 1em;
+    height: 35px;
+    width: 310px;
+    margin-bottom: 1em;
+  }
+  .buttonArea{
+    text-align: right;
+  }
+}
