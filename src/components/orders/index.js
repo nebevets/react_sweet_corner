@@ -14,16 +14,30 @@ class Orders extends Component{
   }
   render(){
     const {orders, ordersError} = this.props;
-    const orderList = orders && orders.reverse().map(order => <Order onClick={this.getOrderPage.bind(this, order.id)} {...order} key={order.id} />);
+    if(ordersError){
+      return(
+        <div className="orders">
+          {
+            <NetworkError stack={ordersError.stack} url={ordersError.config.url} networkError={ordersError.networkError} />
+          }
+        </div>
+      );
+    }
+    if(orders && orders.length){
+      return(
+        <div className="orders">
+          {
+            orders
+            .reverse()
+            .map(order => <Order onClick={this.getOrderPage.bind(this, order.id)} {...order} key={order.id} />)
+          }
+        </div>
+      );
+    }
     return(
       <div className="orders">
-        {
-          ordersError &&
-            <NetworkError stack={ordersError.stack} url={ordersError.config.url} networkError={ordersError.networkError} />
-        }
-        {
-          orders && orderList   
-        }
+        <h2>No orders found...</h2>
+        <p>Click products to start building your order.</p>
       </div>
     );
   }

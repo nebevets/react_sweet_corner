@@ -13,10 +13,10 @@ class OrderDetails extends Component{
   render(){
     const {orderDetail, orderDetailsError} = this.props;
     const orderItems = orderDetail && orderDetail.items.map(item => 
-      <span className='item' key={item.id}>
-        <div>{item.product.name}</div>
+      <span className="item" key={item.id}>
+        <div className="name">{item.product.name}</div>
         <img src={item.product.thumbnail.url} alt={item.product.thumbnail.altText}/>
-        <div>{item.quantity} at {convertToDollarsandCents(item.each)} ea.</div>
+        <div className="quantity">{item.quantity} at {convertToDollarsandCents(item.each)} ea.</div>
       </span>
     );
     return(

@@ -1,8 +1,10 @@
+import './sign-in.scss';
 import React, {Component} from 'react';
 import {Field, reduxForm} from 'redux-form';
 import {connect} from 'react-redux';
 import {signIn, clearErrors} from '../../actions';
 import Input from '../input';
+import Button from '../button';
 
 class SignIn extends Component{
   async handleSignIn(values){
@@ -16,20 +18,23 @@ class SignIn extends Component{
   }
   render(){
     const {signInError, handleSubmit} = this.props;
-    // console.log('signIn props: ', this.props);
     return(
-      <form className="signInForm" onSubmit={handleSubmit(this.handleSignIn.bind(this))}>
-        <div className="row">
-          <Field name="email" label="Email" className="email" component={Input}/>
-        </div>
-        <div className="row">
-          <Field name="password" label="Password" className="password" component={Input} type="password"/>
-        </div>
-        <div className="row">
-          <button className="btnSignIn">Sign In</button>
-          <p className="red-text">{signInError}</p>
-        </div>
-      </form>
+      <div className="signIn">
+        <h3>Welcome Back!</h3>
+        <p>Use your email and password to sign in to your account.</p>
+        <form className="signInForm" onSubmit={handleSubmit(this.handleSignIn.bind(this))}>
+            <Field name="email" placeholder="Email" className="email" component={Input}/>
+            <Field name="password" placeholder="Password" className="password" component={Input} type="password"/>
+            <div className="buttonArea">
+              <Button type="submit" title="Sign In...">
+                <span>Sign In </span>
+                <span className="material-icons">arrow_forward</span>
+              </Button>
+              <p className="error">{signInError}</p>
+            </div>
+        </form>
+      </div>
+      
     );
   }
 }
